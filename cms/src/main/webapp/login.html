@@ -68,22 +68,22 @@
             <div class="alert alert-info">
                 Please login with your Username and Password.
             </div>
-            <form class="form-horizontal" action="auth/login" method="post">
+            <form class="form-horizontal" action="/login" method="post">
                 <fieldset>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user red"></i></span>
-                        <input type="text" name="username"  class="form-control" placeholder="Username">
+                        <input type="text" name="sysUser.username"  class="form-control" placeholder="Username">
                     </div>
                     <div class="clearfix"></div><br>
 
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock red"></i></span>
-                        <input type="password" name="password" class="form-control" placeholder="Password">
+                        <input type="password" name="sysUser.password" class="form-control" placeholder="Password">
                     </div>
                     <div class="clearfix"></div>
 
                     <div class="input-prepend">
-                        <label class="remember" for="remember"><input type="checkbox" id="remember"> Remember me</label>
+                        <!--<label class="remember" for="remember"><input type="checkbox" id="remember"> Remember me</label>-->
                     </div>
                     <div class="clearfix"></div>
 
