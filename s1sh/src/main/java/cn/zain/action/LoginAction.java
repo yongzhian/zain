@@ -27,7 +27,6 @@ public class LoginAction extends Action {
     private Logger logger = Logger.getLogger(LoginAction.class);
 
      private UserService userService;
-
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
                                  HttpServletRequest request, HttpServletResponse response) throws Exception {

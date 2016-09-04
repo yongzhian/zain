@@ -20,16 +20,17 @@
 
 		</action>
 
-
-
 	</action-mappings>
+	<!--通过 <controller >来替代 org.apache.struts.action.RequestProcessor 的请求处理。-->
+	<controller processorClass="org.springframework.web.struts.DelegatingRequestProcessor" />
 	<!--  国际化文件配置
 	<message-resources parameter="com.yza.struts.ApplicationResources" />-->
 	<message-resources parameter="ApplicationResources" />
 	<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
 		<set-property property="contextConfigLocation"
-					  value="/WEB-INF/applicationContext.xml"/>
+		value="/WEB-INF/applicationContext.xml"/>
 	</plug-in>
+
 
 </struts-config>
 
