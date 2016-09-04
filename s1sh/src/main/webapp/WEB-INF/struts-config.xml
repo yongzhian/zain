@@ -9,7 +9,7 @@
 	<global-exceptions />
 	<global-forwards />
 	<action-mappings>
-		<action path="/login" name="LoginForm" type="cn.zain.action.LoginAction"
+		<action path="/login" name="LoginForm" type="org.springframework.web.struts.DelegatingActionProxy"
 			scope="request" input="/index.jsp">
 			<forward name="success" path="/success.jsp"></forward>
 		</action>
@@ -21,8 +21,6 @@
 		</action>
 
 	</action-mappings>
-	<!--通过 <controller >来替代 org.apache.struts.action.RequestProcessor 的请求处理。-->
-	<controller processorClass="org.springframework.web.struts.DelegatingRequestProcessor" />
 	<!--  国际化文件配置
 	<message-resources parameter="com.yza.struts.ApplicationResources" />-->
 	<message-resources parameter="ApplicationResources" />
