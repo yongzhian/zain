@@ -7,11 +7,12 @@
 
 package cn.zain.model;
 
-public class UserBean {
+public class User {
 	private Integer id;
 	private String userName;
 	private String className;
 	private String gender;
+	private String password;
 
 	public Integer getId() {
 		return id;
@@ -45,9 +46,22 @@ public class UserBean {
 		this.gender = gender;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Override
 	public String toString() {
-		return this.userName + "  " + this.className + "  " + this.gender;
-
+		return "User{" +
+				"id=" + id +
+				", userName='" + userName + '\'' +
+				", className='" + className + '\'' +
+				", gender='" + gender + '\'' +
+				", password='" + password + '\'' +
+				'}';
 	}
 }

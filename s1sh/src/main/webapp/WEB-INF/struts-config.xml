@@ -4,20 +4,32 @@
 <struts-config>
 	<form-beans>
 		<form-bean name="LoginForm" type="cn.zain.form.LoginForm"></form-bean>
+		<form-bean name="userForm" type="org.apache.struts.action.DynaActionForm"/>
 	</form-beans>
 	<global-exceptions />
 	<global-forwards />
 	<action-mappings>
 		<action path="/login" name="LoginForm" type="cn.zain.action.LoginAction"
-			scope="request" input="/index.jsp"> 
+			scope="request" input="/index.jsp">
 			<forward name="success" path="/success.jsp"></forward>
 		</action>
+
+		<action path="/userinfo" name="LoginForm" type="cn.zain.action.UserAction"
+				scope="request" input="/index.jsp">
+			<forward name="success"  path="/user/userinfo.jsp"/>
+
+		</action>
+
 
 
 	</action-mappings>
 	<!--  国际化文件配置
 	<message-resources parameter="com.yza.struts.ApplicationResources" />-->
 	<message-resources parameter="ApplicationResources" />
+	<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation"
+					  value="/WEB-INF/applicationContext.xml"/>
+	</plug-in>
 
 </struts-config>
 

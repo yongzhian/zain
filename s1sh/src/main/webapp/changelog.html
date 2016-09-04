@@ -1,0 +1,341 @@
+<!DOCTYPE>
+
+<html>
+<head>
+	<title>Flw Server Plugin Changelog</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		BODY {
+			font-size: 100%;
+		}
+
+		BODY, TD, TH {
+			font-family: tahoma, verdana, arial, helvetica, sans-serif;
+			font-size: 0.8em;
+		}
+
+		H2 {
+			font-size: 10pt;
+			font-weight: bold;
+			padding-left: 1em;
+		}
+
+		A:hover {
+			text-decoration: none;
+		}
+
+		H1 {
+			font-family: tahoma, arial, helvetica, sans-serif;
+			font-size: 1.4em;
+			font-weight: bold;
+			border-bottom: 1px #ccc solid;
+			padding-bottom: 2px;
+		}
+
+		TT {
+			font-family: courier new;
+			font-weight: bold;
+			color: #060;
+		}
+
+		PRE {
+			font-family: courier new;
+			font-size: 100%;
+		}
+	</style>
+</head>
+<body>
+<h1>Flw Server Plugin Changelog</h1>
+
+<p>
+	<b>2.1.0.12</b> -- Aug. 24,2016-08-24 10:34:44
+</p>
+<ul>
+	<b>New Feature</b>
+	<li>选择机器人等协议添加app加入的时间字段“request_time” 2016-08-17 15:13:14 </li>
+	<li>添加协议:"选择机器人失败/超时" 2016-08-18 17:13:14 </li>
+	<li>优化修改用户信息DB操作逻辑 2016-08-19 10:35:06 </li>
+	<li>分离redis配置参数到配置文件 2016-08-19 10:35:06 </li>
+	<li>修改插件管理菜单位置，便于操作 2016-08-19 10:50:21 </li>
+	<li>cr session状态进行修订：init/using/closed/init_aborted/using_aborted，一般不单独出现aborted 2016-08-22 14:15:44</li>
+	<li>"选择机器人失败/超时"协议修改参数为robot_sn 2016-08-23 09:59:59</li>
+	<li>"选择机器人失败/超时"协议只返回成功 2016-08-23 18:37:22</li>
+	<li>"创建专有通道"协议重置cr session时，校验其是否存在，防止robot下线时该状态异常 2016-08-24 10:34:44</li>
+	<b>Bug</b>
+</ul>
+
+<p>
+	<b>2.1.0.11</b> -- Aug. 17,2016-08-17 16:25:24
+</p>
+<ul>
+	<b>New Feature</b>
+	<li>调整生产服务器配置中头像下载地址（https改为http），音乐服务器域名调整 2016-08-16 15:44:50</li>
+	<li>sr_session/sr_session/rtrc_room/cr_session会话清理时，使用代理发送会话信息到jms 2016-08-16 15:45:18</li>
+	<li>app初始化时，添加app最后使用手机os和app版本的信息 2016-08-17 11:53:13</li>
+	<li>robot登录时，修改其登录ip和登录时间 2016-08-17 11:53:19</li>
+	<li>添加CR_SESSION和ROOM_SESSION状态维护，只有退出机器人状态status会改为closed，表示正常结束，其他均为abort 2016-08-17 16:25:24</li>
+	<li>更新用户设备信息,日志调整 2016-08-17 17:16:14</li>
+	<li>优化代理性能 2016-08-18 15:16:59</li>
+	<b>Bug</b>
+</ul>
+
+<p>
+	<b>2.1.0.10</b> -- Aug. 11,2016-08-11 15:47:15
+</p>
+<ul>
+	<b>New Feature</b>
+	<li>瞩目会议采用PMI会议，以修复出现“等待主持人加入”的问题 2016-07-21 17:18:40</li>
+	<li>拆分ZHUMU的key和secret到配置文件 2016-07-26 17:31:40</li>
+	<li>添加协议“设置（瞩目）房间属性”，用于开启或关闭瞩目PMI会议的视频通道 2016-07-28 16:05:53</li>
+	<li>协议“设置（瞩目）房间属性”成功返回时，添加“vedio_on”属性，与请求一致 2016-08-01 14:30:16</li>
+	<li>区分各个正式/测试等不同环境下，创建zhumu会议的配置 2016-08-08 11:37:20</li>
+	<li>修改zhumu房间修改失败后的提示，提示用户重新连接 2016-08-08 11:38:06</li>
+	<li>app选择机器人后，传递cr_session为空或不传时，根据手机号清除CR会话信息 2016-08-11 15:47:15</li>
+	<b>Bug</b>
+	<li>修改pmi会议时，同时修改密码 2016-07-28 13:59:58</li>
+</ul>
+
+<p>
+	<b>2.1.0.9</b> -- Jul. 7,2016-07-07 15:34:58
+</p>
+<ul>
+	<b>New Feature</b>
+	<li>添加瞩目视频通信方案，兼容webrtc通信(https://www.zhumu.me/)</li>
+	<li>机器人或手机异常下线，清除cr和room缓存信息时，若是ZHUMU会话模式，则终止该会议 2016-07-12 14:07:35</li>
+	<li>代码重构优化 2016-07-21 10:56:43</li>
+	<li>"创建专有数据通道"失败时，清除CR Session，添加创建错误返回，区分CR Session校验错误 2016-07-21 10:59:02</li>
+	<b>Bug</b>
+	<li>修复appGetClientDetailInfo查询缓存失败时，空指针异常 2016-07-21 13:42:47</li>
+</ul>
+<p>
+	<b>2.1.0.8</b> -- Jul. 5,2016-07-05 09:12:32
+</p>
+<ul>
+	<b>New Feature</b>
+	<li>“用户退出当前机器人”时发送“服务器：通知机器人断开与当前用户的会话” 2016-06-27 11:30:31</li>
+	<b>Bug</b>
+	<li>修复“通知机器人中止建立RTC连接”mesage 2016-06-23 11:33:15</li>
+</ul>
+
+<p>
+	<b>2.1.0.7</b> -- Jun. 2,2016-6-2 16:04:33
+</p>
+<ul>
+	<b>New Feature</b>
+	<li>添加协议:机器人(通知手机APP)中止建立RTC连接 r_abort_rtc_conn</li>
+	<li>添加协议：服务器：通知手机APP中止建立RTC连接notify_c_abort_rtc_conn</li>
+	<li>添加协议:手机APP(通知机器人)中止建立RTC连接 c_abort_rtc_conn</li>
+	<li>添加协议：服务器：通知机器人中止建立RTC连接 notify_r_abort_rtc_conn</li>
+	<li>更新flw-jms-client版本到2.1.1</li>
+	<li>添加机器人与手机端通信info下日志记录</li>
+	<li>采用轮询算法获取最优rtc服务器 2016-05-25 17:32:41</li>
+	<li>轮询算法过程数据上报 2016-06-04 17:21:44</li>
+	<b>Bug</b>
+	<li>修复获取机器人绑定用户，在user_robot关联关系正常但user禁用时，因数据异常导致返回失败，只返回有效user列表，记录错误日志</li>
+	<li>修复webrtc连接数显示 2016-05-23 13:48:24</li>
+	<li>http://redmine.flwrobot.com/redmine/issues/2034</li>
+	<li>http://redmine.flwrobot.com/redmine/issues/2010</li>
+	<li>http://redmine.flwrobot.com/redmine/issues/2111</li>
+</ul>
+
+<p>
+	<b>2.1.0.6</b> -- May. 25,2016-5-10 16:04:33
+</p>
+<ul>
+	<b>New Feature</b>
+	<li>添加机器人与手机端通信debug下日志记录</li>
+	<li>更新flw-jms-client版本到2.1</li>
+	<li>添加机器人和手机app通信cr session校验(需配置flw.cr.message.check.enable openfire后台管理 服务器>服务器管理器>系统属性中修改
+		默认false)</li>
+	<li>优化部分代码</li>
+	<b>Bug</b>
+	<li></li>
+</ul>
+
+<p>
+	<b>2.1.0.5</b> -- Apr. 25,2016-4-25 16:04:33
+</p>
+<ul>
+	<b>New Feature</b>
+	<li></li>
+	<b>Bug</b>
+	<li>修复机器人无社区房间号时，出现IQ处理失败的异常</li>
+	<li>首次扫描添加机器人时，点激活并绑定机器人时，客户端提示“无此机器人操作权限”。</li>
+</ul>
+
+</h1>
+
+<p>
+	<b>2.1.0.4</b> -- Apr. 18,2016-4-18 16:04:33
+</p>
+<ul>
+	<b>New Feature</b>
+	<li>XMPP error code revision(XMPP错误码修订)</li>
+	<li>The prototype according to modify the business
+		logic(根据原型修改业务逻辑)"</li>
+	<li>Add community related agreement(添加社区相关协议)"</li>
+	<li>Add a robot activation logic(添加机器人激活逻辑)"</li>
+	<li>重新加载机器人缓存时，将当前的redis中robot信息进行合并</li>
+	<b>Bug</b>
+</ul>
+
+<p>
+	<b>2.1.0.3</b> -- Jan. 19,2016-1-19 11:04:33
+</p>
+<ul>
+	<b>New Feature</b>
+	<li>The New protocol "Get the basic information of the
+		robot(获取机器人基本信息)"</li>
+	<li>The New protocol "Get information about robots(获取关于机器人信息)"</li>
+	<li>The New protocol "administrator: invite the family to bind
+		the robot(管理员：邀请家人绑定机器人)"</li>
+	<li>The New protocol "server: notify the user administrator to
+		bind the robot(服务器：通知用户管理员邀请绑定机器人)"</li>
+	<b>Bug</b>
+</ul>
+
+
+<p>
+	<b>2.1.0.2</b> -- Jan. 18,2016-1-18 15:04:33
+</p>
+<ul>
+	<b>New Feature</b>
+	<li>APP to obtain the initial information to add todo</li>
+	<li>Separation protocol "Administrator: mandatory login robot"
+		and "server: notify the robot to force the login"</li>
+	<li>The New protocol "Get a list of robots using
+		state(获取机器人列表使用状态)"</li>
+	<b>Bug</b>
+</ul>
+
+<p>
+	<b>2.1.0.1</b> -- Jan. 12,2016-1-12 15:04:33
+</p>
+<ul>
+	<b>New Feature</b>
+	<li>Version update to 2.1</li>
+	<li>The New protocol "report the status information of the robot
+		body(上报机器人本体状态信息)"</li>
+	<li>The New protocol "to get the main information of the
+		robot(获取机器人主要信息)"</li>
+	<li>Partial code refactoring</li>
+	<li>Background management to add configuration parameters query</li>
+	<b>Bug</b>
+</ul>
+
+<p>
+	<b>2.0.1.7</b> -- Dec. 27, 2015-12-16 14:51:29
+</p>
+<ul>
+	<b>New Feature</b>
+	<li>Apply Redis cluster</li>
+	<b>Bug</b>
+</ul>
+
+</h1>
+
+<p>
+	<b>2.0.1.6</b> -- Dec. 27, 2015-12-2 14:51:29
+</p>
+<ul>
+	<b>New Feature</b>
+	<li>Based on the detailed design version V0.33 revision</li>
+	<li>Choose robot process adjustment, the server is no longer
+		timeout polling</li>
+	<li>The New protocol "Server: notify the phone APP that robot is
+		offline"</li>
+	<li>The New protocol "server: notify robot that APP is offline"</li>
+	<li>Add opefire API operations</li>
+	<li>Code optimization(todo)</li>
+	<li>Transmission direction and user name check</li>
+	<li>Whether to enable p2p channel background maintenance</li>
+	<b>Bug</b>
+</ul>
+<p>
+	<b>2.0.1.5</b> -- November 10, 2015
+</p>
+<ul>
+	<b>New Feature</b>
+	<li>Modify the whole version 2.0.1,The child version released for
+		testing</li>
+	<li>AES encryption repair</li>
+	<li>Based on the detailed design V0.25 (2015.9.23) revision</li>
+	<li>Remove the XMPP direct reading and writing of the database
+		log</li>
+	<li>Give up restAPI (not synchronous roster cache), directly
+		using the roster and cache operation,package
+		'com.flwrobot.openfire.api'</li>
+	<li>Add the server to receive message(json) to XML unescapes</li>
+	<b>Bug</b>
+	<li>http://redmine.flwrobot.com/redmine/issues/902</li>
+	<li>http://redmine.flwrobot.com/redmine/issues/951</li>
+	<li>http://redmine.flwrobot.com/redmine/issues/991</li>
+	<li>http://redmine.flwrobot.com/redmine/issues/999</li>
+	<li>http://redmine.flwrobot.com/redmine/issues/1026</li>
+	<li>http://redmine.flwrobot.com/redmine/issues/1063</li>
+	<li>http://redmine.flwrobot.com/redmine/issues/1067</li>
+	<li>http://redmine.flwrobot.com/redmine/issues/1071</li>
+	<li>http://redmine.flwrobot.com/redmine/issues/1090</li>
+</ul>
+
+
+<p>
+	<b>2.0.4</b> -- September 11, 2015
+</p>
+<ul>
+	<b>New Feature</b>
+	<li>V2.0 main business logic to complete</li>
+	<li>Json Object used in Object rather than string</li>
+	<li>OFRestApi add methods to add user when the user's fullName
+		(fill in username when registering) as a robot to the user's nickname</li>
+	<li>Update the XMPP plug-in UserService RestApi</li>
+	<li>Mobile phone users log in to add the login IP and login time</li>
+	<li>Repair the base64 USES the Apache codec</li>
+	<li>Code optimization</li>
+	<li>Repair the other bugs</li>
+	<b>Bug</b>
+</ul>
+
+<p>
+	<b>2.0.3</b> -- August 6, 2015
+</p>
+<ul>
+	<b>New Feature</b>
+	<li>Remove the previous version of the business logic</li>
+	<b>Bug</b>
+</ul>
+
+<p>
+	<b>2.0.2</b> -- July 21, 2015
+</p>
+<ul>
+	<b>New Feature</b>
+	<li>Repair of AES encryption, realizes the cross-language
+		encryption to decrypt, support Java, C, Python, etc</li>
+	<b>Bug</b>
+</ul>
+
+<p>
+	<b>2.0.1</b> -- June 24, 2015
+</p>
+<ul>
+	<b>New Feature</b>
+	<li>Late changes to the project structure, easy to expand</li>
+	<li>Add redis operation method</li>
+	<li>Regularly check online users, if used with the server cache
+		will update the cache</li>
+	<li>When a user logs in, save the session between the user and
+		the server to redis</li>
+	<b>Bug</b>
+</ul>
+
+<p>
+	<b>1.0</b> -- April 1, 2015
+</p>
+<ul>
+	<b>New Feature</b>
+	<li>Requires Openfire 3.9.3</li>
+	<b>Bug</b>
+</ul>
+</body>
+</html>
