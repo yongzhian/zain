@@ -21,11 +21,13 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class LoginAction extends Action {
 
     private Logger logger = Logger.getLogger(LoginAction.class);
 
+    @Resource(name = "userService")
      private UserService userService;
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
@@ -53,11 +55,5 @@ public class LoginAction extends Action {
 
     }
 
-    public UserService getUserService() {
-        return userService;
-    }
 
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
 }
