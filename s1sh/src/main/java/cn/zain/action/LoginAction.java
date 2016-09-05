@@ -23,7 +23,7 @@ import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
 import org.springframework.web.struts.ActionSupport;
 
-public class LoginAction extends ActionSupport {
+public class LoginAction extends Action {
 
     private Logger logger = Logger.getLogger(LoginAction.class);
 
@@ -35,7 +35,7 @@ public class LoginAction extends ActionSupport {
 
         ActionMessages errors = new ActionMessages();
         LoginForm loginForm = (LoginForm) form;
-        userService = (UserService) getWebApplicationContext().getBean("userService");
+
         if (null == userService) { //这里无法取得spring注入的userService
             logger.info("userService is null:" + (null == userService));
             return new ActionForward(mapping.getInput());

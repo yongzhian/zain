@@ -17,15 +17,13 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Copyright (c) 2016 www.yongzhian.cn. All Rights Reserved.
  */
-public class UserAction extends ActionSupport {
+public class UserAction extends Action {
     private Logger logger = Logger.getLogger(UserAction.class);
     private UserService userService;
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        ApplicationContext ctx = getWebApplicationContext();
         logger.info("userService is null:" + (null == userService));
-        userService = (UserService) ctx.getBean("userService");
         if (null == userService) { //这里无法取得spring注入的userService
             logger.info("userService is null:" + (null == userService));
             return new ActionForward(mapping.getInput());
@@ -45,5 +43,13 @@ public class UserAction extends ActionSupport {
         request.setAttribute("user", user);
 //        return new ActionForward("/user/userinfo.jsp");
         return mapping.findForward("success");
+    }
+
+    public UserService getUserService() {
+        return userService;
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 }

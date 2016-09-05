@@ -15,5 +15,10 @@
     <bean id="userService" class="cn.zain.service.impl.UserServiceImpl">
         <property name="user" ref="user"/>
     </bean>
-
+    <bean id="loginAction" name="/login" class="cn.zain.action.LoginAction">
+        <property name="userService" ref="userService"/>
+    </bean>
+    <bean id="userAction" name="/userinfo" class="cn.zain.action.UserAction">
+        <property name="userService" ref="userService"/>
+    </bean>
 </beans>
