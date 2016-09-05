@@ -21,12 +21,13 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
+import org.springframework.web.struts.ActionSupport;
 
-public class LoginAction extends Action {
+public class LoginAction extends ActionSupport {
 
     private Logger logger = Logger.getLogger(LoginAction.class);
 
-     private UserService userService;
+    private UserService userService;
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
@@ -34,7 +35,8 @@ public class LoginAction extends Action {
 
         ActionMessages errors = new ActionMessages();
         LoginForm loginForm = (LoginForm) form;
-        if (null == userService){ //这里无法取得spring注入的userService
+        userService = (UserService) getWebApplicationContext().getBean("userService");
+        if (null == userService) { //这里无法取得spring注入的userService
             logger.info("userService is null:" + (null == userService));
             return new ActionForward(mapping.getInput());
         }

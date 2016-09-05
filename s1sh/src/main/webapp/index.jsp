@@ -37,7 +37,7 @@
     </html:form>
 </div>
 <div style="border-left: 20px;font-size: 24px;">
-    <a href="userinfo.do">userinfo<br><br>
+    <a href="userinfo.do?username=struts1">userinfo<br><br>
 </div>
 
 <div style="border-left: 20px;font-size: 24px;">
