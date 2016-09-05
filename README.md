@@ -1,4 +1,2 @@
-# zain
-ui 参考
-https://github.com/usmanhalalit/charisma  项目地址
-http://usman.it/themes/charisma/index.html 演示地址
+基于RequestProcessor实现struts集成spring
+<img src="https://github.com/yongzhian/zain/blob/struts1PlusSpringByRequestProcessor/1.png"/>
