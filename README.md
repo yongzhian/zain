@@ -1,4 +1,4 @@
-# zain
-ui 参考
-https://github.com/usmanhalalit/charisma  项目地址
-http://usman.it/themes/charisma/index.html 演示地址
+基于struts1和spring的集成
+
+<img src="https://github.com/yongzhian/zain/blob/struts1PlusSpringByActionSupport/1.png">
+<img src="https://github.com/yongzhian/zain/blob/struts1PlusSpringByActionSupport/2.png">
