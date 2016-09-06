@@ -22,7 +22,7 @@
             <artifactId>struts-core</artifactId>
             <version>${org.apache.struts.version}</version>
         </dependency>
-         <dependency>
+        <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts-extras</artifactId>
             <version>${org.apache.struts.version}</version>
@@ -157,6 +157,21 @@
             <version>2.5</version>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>local</id>
+            <!--activeByDefault为true的时候就表示当没有指定其他profile为激活状态时，该profile就默认会被激活-->
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <filter.file>/src/main/filters/profile-local.properties</filter.file>
+            </properties>
+        </profile>
+
+    </profiles>
+
     <build>
         <finalName>s1sh</finalName>
         <plugins>
@@ -175,5 +190,16 @@
                 </configuration>
             </plugin>
         </plugins>
+        <filters>
+            <filter>${filter.file}</filter>
+        </filters>
+        <resources>
+            <!--resource的列表，用于包括所有的资源-->
+            <resource>
+                <directory>src/main/resources</directory>
+                <!--是否替换资源中的属性-->
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
 </project>
