@@ -28,7 +28,7 @@
     <bean:message key="hello.struts1.title"/>
 </h1>
 <div style="border-left: 20px;font-size: 20px;">
-    <html:errors/>
+    <html:errors property="err_msg"/>
     <html:form action="/login.do">
         <label style="color: #006600;margin-right: 3px">用户名</label><html:text property="userName"></html:text>
         <br/><br>

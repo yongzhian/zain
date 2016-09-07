@@ -1,16 +1,10 @@
 package cn.zain.action;
 
-import cn.zain.form.LoginForm;
-import cn.zain.model.User;
-import cn.zain.service.UserService;
+import cn.zain.model.po.SysUser;
+import cn.zain.service.SysUserService;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.*;
-import org.springframework.context.ApplicationContext;
-import org.springframework.web.struts.ActionSupport;
 
-import javax.annotation.Resource;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,37 +13,31 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class UserAction extends Action {
     private Logger logger = Logger.getLogger(UserAction.class);
-    private UserService userService;
+    private SysUserService sysUserService;
+
+    public SysUserService getSysUserService() {
+        return sysUserService;
+    }
+
+    public void setSysUserService(SysUserService sysUserService) {
+        this.sysUserService = sysUserService;
+    }
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        logger.info("userService is null:" + (null == userService));
-        if (null == userService) { //这里无法取得spring注入的userService
-            logger.info("userService is null:" + (null == userService));
+        ActionMessages errors = new ActionMessages();
+        DynaActionForm userForm = (DynaActionForm) form;
+
+
+        if (null == sysUserService) { //这里无法取得spring注入的userService
+            logger.error("sysUserService is null,sysUserService:" + sysUserService);
             return new ActionForward(mapping.getInput());
         }
-        logger.info("form is null ? " + form);
-        if (null == form) { //这里无法取得spring注入的userService
-            logger.info("form is null:" + form);
-            return new ActionForward(mapping.getInput());
-        }
-        DynaActionForm userForm = (DynaActionForm) form;//使用动态的actionForm
-        String username = userForm.getString("username");
-        User user = userService.getUserByUsername(username);
-        if (null == user) {
-            logger.info("用户未找到," + user);
-            return new ActionForward(mapping.getInput());
-        }
-        request.setAttribute("user", user);
-//        return new ActionForward("/user/userinfo.jsp");
+
+        SysUser user = sysUserService.getSysUserByUsername(userForm.getString("username"));
+
+        request.setAttribute("user", user); //未查询到用户
         return mapping.findForward("success");
     }
 
-    public UserService getUserService() {
-        return userService;
-    }
-
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
 }

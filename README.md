@@ -2,7 +2,8 @@
 # zain
 
 <h3>s1sh changelog</h3>
-ps:struts1只能兼容spring3，采用版本struts 1.3.10+spring 3.2.17.RELEASE + hibernate 5.2.2.Final
+ps:struts1只能兼容spring3，而spring3只支持hibernate到4，故采用版本struts 1.3.10+spring 3.2.17.RELEASE + hibernate 4.3.11.Final
+
 <h5>version: 684706b464b1be37d99bea448586ef9a807292eb 2016-09-05 21:00:00</h5>
 <h6>基于ActionProxy集成struts和spring 创建分支 struts1PlusSpringByActionProxy</h6><br>
 
