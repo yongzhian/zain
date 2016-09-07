@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:mysql://localhost:3306/luman</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">passwd4yza</property>
+
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <mapping resource="cn/zain/model/po/SysNode.hbm.xml"/>
+        <mapping resource="cn/zain/model/po/SysRole.hbm.xml"/>
+        <mapping resource="cn/zain/model/po/SysUser.hbm.xml"/>
+        <mapping class="cn.zain.model.po.SysNode"/>
+        <mapping class="cn.zain.model.po.SysRole"/>
+        <mapping class="cn.zain.model.po.SysUser"/>
+        <!--是否自动提交-->
+        <!--<property name="connection.autocommit">true</property>-->
+
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>

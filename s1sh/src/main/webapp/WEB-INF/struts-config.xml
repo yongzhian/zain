@@ -26,10 +26,10 @@
     </action-mappings>
     <!--  国际化文件配置
     <message-resources parameter="com.yza.struts.ApplicationResources" />-->
-    <message-resources parameter="ApplicationResources"/>
+    <message-resources parameter="i18n.ApplicationResources"/>
     <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
         <set-property property="contextConfigLocation"
-                      value="/WEB-INF/applicationContext.xml"/>
+                      value="classpath:applicationContext.xml"/>
     </plug-in>
 
 </struts-config>

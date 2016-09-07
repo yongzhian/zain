@@ -12,6 +12,7 @@
             http://www.springframework.org/schema/tx/spring-tx.xsd
             http://www.springframework.org/schema/aop
             http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--使用注解-->
     <context:component-scan base-package="cn.zain"/>
 
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
@@ -37,9 +38,9 @@
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" lazy-init="false">
         <!-- 注入datasource，给sessionfactoryBean内setdatasource提供数据源 -->
         <property name="dataSource" ref="dataSource" />
-        <property name="configLocation" value="/WEB-INF/hibernate.cfg.xml"></property>
+        <property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
         <!-- //加载实体类的映射文件位置及名称 -->
-        <property name="mappingLocations" value="classpath:cn/zain/model/po/*.hbm.xml"></property>
+        <property name="mappingLocations" value="classpath:cn/zain/model/po/*.xml"></property>
     </bean>
 
     <!-- 配置Spring声明式事务 -->
