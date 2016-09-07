@@ -1,6 +1,8 @@
 package cn.zain.action;
 
+import cn.zain.model.po.SysNode;
 import cn.zain.model.po.SysUser;
+import cn.zain.service.SysNodeService;
 import cn.zain.service.SysUserService;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.*;
@@ -14,14 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 public class UserAction extends Action {
     private Logger logger = Logger.getLogger(UserAction.class);
     private SysUserService sysUserService;
-
-    public SysUserService getSysUserService() {
-        return sysUserService;
-    }
-
-    public void setSysUserService(SysUserService sysUserService) {
-        this.sysUserService = sysUserService;
-    }
+    private SysNodeService sysNodeService;
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -35,9 +30,27 @@ public class UserAction extends Action {
         }
 
         SysUser user = sysUserService.getSysUserByUsername(userForm.getString("username"));
+        SysNode sysNode = sysNodeService.getSysNodeById(3);
 
         request.setAttribute("user", user); //未查询到用户
+        request.setAttribute("sysNode", sysNode); //节点信息
         return mapping.findForward("success");
     }
 
+    public SysUserService getSysUserService() {
+        return sysUserService;
+    }
+
+    public void setSysUserService(SysUserService sysUserService) {
+        this.sysUserService = sysUserService;
+    }
+
+
+    public SysNodeService getSysNodeService() {
+        return sysNodeService;
+    }
+
+    public void setSysNodeService(SysNodeService sysNodeService) {
+        this.sysNodeService = sysNodeService;
+    }
 }

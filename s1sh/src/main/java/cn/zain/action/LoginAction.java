@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.zain.form.LoginForm;
 import cn.zain.model.po.SysUser;
+import cn.zain.service.SysNodeService;
 import cn.zain.service.SysUserService;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.Action;
@@ -26,14 +27,7 @@ public class LoginAction extends Action {
     private Logger logger = Logger.getLogger(LoginAction.class);
 
     private SysUserService sysUserService;
-
-    public SysUserService getSysUserService() {
-        return sysUserService;
-    }
-
-    public void setSysUserService(SysUserService sysUserService) {
-        this.sysUserService = sysUserService;
-    }
+    private SysNodeService sysNodeService;
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
@@ -63,4 +57,19 @@ public class LoginAction extends Action {
 
     }
 
+    public SysUserService getSysUserService() {
+        return sysUserService;
+    }
+
+    public void setSysUserService(SysUserService sysUserService) {
+        this.sysUserService = sysUserService;
+    }
+
+    public SysNodeService getSysNodeService() {
+        return sysNodeService;
+    }
+
+    public void setSysNodeService(SysNodeService sysNodeService) {
+        this.sysNodeService = sysNodeService;
+    }
 }

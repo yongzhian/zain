@@ -64,12 +64,13 @@
     </aop:config>
 
     <bean id="sysUserService" class="cn.zain.service.impl.SysUserServiceImpl"/>
-
+    <bean id="sysNodeService" class="cn.zain.service.impl.SysNodeServiceImpl"/>
 
     <bean id="loginAction" name="/login" class="cn.zain.action.LoginAction">
         <property name="sysUserService" ref="sysUserService"/>
     </bean>
     <bean id="userAction" name="/userinfo" class="cn.zain.action.UserAction">
         <property name="sysUserService" ref="sysUserService"/>
+        <property name="sysNodeService" ref="sysNodeService"/>
     </bean>
 </beans>
