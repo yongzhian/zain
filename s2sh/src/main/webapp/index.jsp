@@ -4,7 +4,7 @@
 <html>
 <head>
 
-<title>Login</title>
+<title>struts2</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -16,6 +16,7 @@
 
 <body>
 
+<a href="userinfo.jsp">toUserInfo</a>
 	<s:form action="login.do" method="post"  >
 		<s:label value="系统登陆"></s:label>
 		<s:textfield name="username" label="账号" />

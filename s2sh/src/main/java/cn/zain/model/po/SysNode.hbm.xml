@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="cn.zain.model.po.SysNode" table="sys_node" schema="luman">
+        <id name="id">
+            <column name="id" sql-type="bigint(20)"/>
+        </id>
+        <property name="nodeCode">
+            <column name="node_code" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="nodeName">
+            <column name="node_name" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="icon">
+            <column name="icon" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+        <property name="url">
+            <column name="url" sql-type="varchar(200)" length="200" not-null="true"/>
+        </property>
+        <property name="createDate">
+            <column name="create_date" sql-type="timestamp"/>
+        </property>
+        <property name="isValid">
+            <column name="is_valid" sql-type="char(1)" length="1"/>
+        </property>
+        <property name="orderNo">
+            <column name="order_no" sql-type="int(6)"/>
+        </property>
+        <one-to-one name="parentNode" class="cn.zain.model.po.SysNode"/>
+        <set name="roles" inverse="true" table="sys_role_node" schema="luman" lazy="false">
+            <key>
+                <column name="sys_node_id"/>
+            </key>
+            <many-to-many not-found="ignore" class="cn.zain.model.po.SysRole">
+                <column name="sys_role_id"/>
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

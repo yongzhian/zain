@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" "http://struts.apache.org/dtds/struts-2.5.dtd">
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
     <!-- 该属性指定需要Struts2处理的请求后缀，该属性的默认值是action，即所有匹配*.action的请求都由Struts2处理。
             如果用户需要指定多个请求后缀，则多个后缀之间以英文逗号（,）隔开。 默认寻找struts-default包下的action-->
-    <constant name="struts.action.extension" value="action" />
+    <constant name="struts.action.extension" value="do"/>
 
     <!-- 指定允许上传的文件最大字节数。默认值是2097152(2M) -->
-    <constant name="struts.multipart.maxSize" value="1000000000" />
+    <constant name="struts.multipart.maxSize" value="1000000000"/>
     <!--解决乱码   -->
     <constant name="struts.i18n.encoding" value="UTF-8"></constant>
     <!-- 定义国际化文件名称
@@ -28,18 +29,10 @@
     定义包则如下
     <package name="project-default" extends="convention-default"> -->
 
-    <package name="home" namespace="/" extends="struts-default">
-        <default-action-ref name="index" />
-        <action name="index" >
-            <result name="success">/index.jsp</result>
-        </action>
-    </package>
     <package name="default" namespace="/" extends="struts-default">
-         <action name="login.do" class="cn.zain.action.LoginAction"
-                method="execute">
-
-            <result name="success">/welcome.jsp</result>
-            <result name="login">/index.jsp</result>
+        <action name="login" class="cn.zain.action.LoginAction" method="execute">
+            <result name="success">welcome.jsp</result>
+            <result name="login">index.jsp</result>
         </action>
     </package>
 </struts>
