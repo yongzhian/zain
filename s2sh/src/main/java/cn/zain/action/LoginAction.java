@@ -5,6 +5,7 @@ package cn.zain.action;
  */
 
 import cn.zain.action.base.BaseAction;
+import cn.zain.model.po.SysNode;
 import cn.zain.model.po.SysUser;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
@@ -12,6 +13,7 @@ import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by Zain 2016/9/7 .
@@ -20,24 +22,48 @@ public class LoginAction extends BaseAction implements ModelDriven {
     private Logger logger = Logger.getLogger(LoginAction.class);
 
     private SysUser sysUser;
+    private SysNode sysNode;
 
     @Override
     public String execute() throws Exception {
-                logger.info("hhh34567890");
-        if ("haha".equals(sysUser.getUsername()) && "hehe".equals(sysUser.getPassword()))// 如果登录的用户名=haha并且密码=hehe，就返回SUCCESS；否则，返回LOGIN
+        logger.debug("execute..");
+        if (null != sysUser && "haha".equals(sysUser.getUsername()) && "hehe".equals(sysUser.getPassword()))// 如果登录的用户名=haha并且密码=hehe，就返回SUCCESS；否则，返回LOGIN
             return SUCCESS;
         return LOGIN;
+    }
+
+    /**
+     * 功能说明 ：查询用户信息
+     *
+     * @return
+     * @author Zain 2016/9/8 14:58
+     * @params
+     */
+    public String getUserInfo() {
+        logger.debug(sysUser);
+        if (null != sysUser && "haha".equals(sysUser.getUsername())) {
+            logger.info("ok");
+            sysUser.setFullName("wod");
+            request.setAttribute("sysUser", sysUser);
+            return SUCCESS;
+        }
+        return INPUT;
     }
 
 
     @Override
     public Object getModel() {
-//        String s1 = ActionContext.getContext().get("username");
-//        String s2 =  ServletActionContext.getContext().get("username");
-         String s3 = request.getParameter("username");
-        if(null == sysUser){
-            sysUser = new SysUser();
-            return sysUser;
+        //如果带有密码参数则是用户po
+        if (request.getParameterMap().containsKey("password")) {
+            if (null == sysUser) {
+                sysUser = new SysUser();
+                return sysUser;
+            }
+        } else { //其他默认为节点po
+            if (null == sysNode) {
+                sysNode = new SysNode();
+                return sysNode;
+            }
         }
         return null;
     }

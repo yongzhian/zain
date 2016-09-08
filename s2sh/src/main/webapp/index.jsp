@@ -16,7 +16,7 @@
 
 <body>
 
-<a href="userinfo.jsp">toUserInfo</a>
+<a href="userinfo.do">toUserInfo</a>
 	<s:form action="login.do" method="post"  >
 		<s:label value="系统登陆"></s:label>
 		<s:textfield name="username" label="账号" />

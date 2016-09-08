@@ -7,6 +7,8 @@
     <title>struts2</title>
 </head>
 <body>
-userinfo
+userinfo<br>
+用户名:${sysUser.username}<br>
+全名 :${sysUser.fullName}<br>
 </body>
 </html>

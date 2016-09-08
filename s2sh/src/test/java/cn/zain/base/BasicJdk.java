@@ -21,7 +21,7 @@ public class BasicJdk {
         SysUser sysUser = new SysUser();
         sysUser.setFullName("tt");;
         logger.info("value Of sysUser:" + String.valueOf(sysUser));
-//        logger.info(" null:" + String.valueOf(null));
-//        logger.info("value Of null:" + String.valueOf(o));
+        logger.info(" null:" + String.valueOf(null));// null不能作为对象进行传递
+        logger.info("value Of null:" + String.valueOf(o)); //对象可以传递null
     }
 }
