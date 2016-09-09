@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_a02676
 
 # zain
 实验项目
@@ -23,3 +24,9 @@ ps:struts1只能兼容spring3，而spring3只支持hibernate到4，故采用版�
 <h3>s2sh changelog</h3>
 FilterDispatcher是struts2.0.x到2.1.2版本的核心过滤器.
 StrutsPrepareAndExecuteFilter是自2.1.3开始就替代了FilterDispatcher
+=======
+基于struts1和spring的集成
+
+<img src="https://github.com/yongzhian/zain/blob/struts1PlusSpringByActionSupport/1.png">
+<img src="https://github.com/yongzhian/zain/blob/struts1PlusSpringByActionSupport/2.png">
+>>>>>>> .merge_file_a01156
