@@ -4,16 +4,25 @@
          id="WebApp_ID" version="2.5">
     <display-name>Archetype Created Web Application</display-name>
 
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
     <filter>
         <filter-name>struts2</filter-name>
         <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
+        <init-param>
+            <param-name>config</param-name>
+            <!--默认在classpath目录下-->
+            <param-value>/WEB-INF/struts-config.xml</param-value>
+        </init-param>
     </filter>
     <filter-mapping>
         <filter-name>struts2</filter-name>
         <!--所以都会拦截,如果只使用.do后缀会导致struts2标签无法识别-->
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
     <welcome-file-list>
         <!--主页建议直接使用html或jsp，一定不要使用struts2标签,需要通过struts2的filter才可以-->
         <!--welcome-file-list配置段仅对servlet和普通页面有效，其他不支持-->
