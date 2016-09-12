@@ -12,6 +12,7 @@
         <org.apache.struts2.version>2.5.2</org.apache.struts2.version>
         <org.springframework.version>4.3.2.RELEASE</org.springframework.version>
         <org.hibernate.version>5.2.2.Final</org.hibernate.version>
+        <org.apache.logging.log4j.version>2.6.2</org.apache.logging.log4j.version>
     </properties>
 
     <dependencies>
@@ -23,10 +24,17 @@
         </dependency>
 
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${org.apache.logging.log4j.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${org.apache.logging.log4j.version}</version>
+        </dependency>
+
 
         <!--spring依赖-->
         <dependency>
@@ -118,6 +126,13 @@
                     <verbose>true</verbose>
                     <fork>true</fork>
                     <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>

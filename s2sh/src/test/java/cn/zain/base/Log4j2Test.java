@@ -8,8 +8,8 @@ import org.junit.Test;
 /**
  * Copyright (c) 2016 www.yongzhian.cn. All Rights Reserved.
  */
-public class BasicJdk {
-    private static Logger logger = LogManager.getLogger(BasicJdk.class);
+public class Log4j2Test {
+    private static Logger logger = LogManager.getLogger(Log4j2Test.class);
     /**
      * 功能说明 ：todo
      * @author	Zain 2016/9/8 13:54

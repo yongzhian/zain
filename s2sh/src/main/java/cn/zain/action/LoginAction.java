@@ -9,7 +9,8 @@ import cn.zain.model.po.SysNode;
 import cn.zain.model.po.SysUser;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.ServletContext;
@@ -19,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
  * Created by Zain 2016/9/7 .
  */
 public class LoginAction extends BaseAction implements ModelDriven {
-    private Logger logger = Logger.getLogger(LoginAction.class);
+    private Logger logger = LogManager.getLogger(LoginAction.class);
 
     private SysUser sysUser;
     private SysNode sysNode;

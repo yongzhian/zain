@@ -1,8 +1,16 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+
          id="WebApp_ID" version="2.5">
+
+
     <display-name>Archetype Created Web Application</display-name>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
 
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -13,8 +21,9 @@
         <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
         <init-param>
             <param-name>config</param-name>
-            <!--默认在classpath目录下-->
-            <param-value>/WEB-INF/struts-config.xml</param-value>
+            <!--默认在classpath目录下,完全调整则无须填写,
+            如果调整位置，则struts-default.xml,struts-plugin.xml则必须手动添加，否则会出错-->
+            <param-value>struts-default.xml,struts-plugin.xml,../struts.xml</param-value>
         </init-param>
     </filter>
     <filter-mapping>
