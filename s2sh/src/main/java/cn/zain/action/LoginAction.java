@@ -12,6 +12,12 @@ import com.opensymphony.xwork2.ModelDriven;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.springframework.jca.cci.connection.CciLocalTransactionManager;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.transaction.jta.WebLogicJtaTransactionManager;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +27,8 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class LoginAction extends BaseAction implements ModelDriven {
     private Logger logger = LogManager.getLogger(LoginAction.class);
-
+    private JpaTransactionManager cciLocalTransactionManager;
+    LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean;
     private SysUser sysUser;
     private SysNode sysNode;
 

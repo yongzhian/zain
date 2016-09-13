@@ -5,6 +5,7 @@
 <hibernate-mapping>
 
     <class name="cn.zain.model.po.SysNode" table="sys_node" schema="luman">
+        <cache usage="read-write"/>
         <id name="id">
             <column name="id" sql-type="bigint(20)"/>
         </id>
