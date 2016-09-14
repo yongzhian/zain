@@ -24,6 +24,6 @@
 		<s:submit value="登录" />
 	</s:form>
 <a href="sysNode/SysNode_list.do">SysNodeList</a>
-
+<a href="sysrole/sysrole!list.do">sysrole</a>
 </body>
 </html>

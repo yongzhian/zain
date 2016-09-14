@@ -7,6 +7,7 @@ package cn.zain.action;
 import cn.zain.action.base.BaseAction;
 import cn.zain.model.po.SysNode;
 import cn.zain.model.po.SysUser;
+import cn.zain.service.SysUserService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.config.providers.XmlConfigurationProvider;
@@ -14,6 +15,8 @@ import net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.ParentPackage;
 import org.hibernate.criterion.Criterion;
 import org.springframework.jca.cci.connection.CciLocalTransactionManager;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -22,14 +25,18 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.jta.WebLogicJtaTransactionManager;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by Zain 2016/9/7 .
  */
+
 public class SysUserAction extends BaseAction implements ModelDriven {
     private Logger logger = LogManager.getLogger(SysUserAction.class);
+    @Resource
+    private SysUserService sysUserService;
     private SysUser sysUser;
     private SysNode sysNode;
 
