@@ -16,8 +16,8 @@
 
 <body>
 
-<a href="userinfo.do">toUserInfo</a>
-	<s:form action="login.do" method="post"  >
+<a href="user/user!userInfo.do">toUserInfo</a>
+	<s:form action="user/user!login.do" method="post"  >
 		<s:label value="系统登陆"></s:label>
 		<s:textfield name="username" label="账号" />
 		<s:password name="password" label="密码" />

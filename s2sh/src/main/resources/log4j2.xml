@@ -18,13 +18,13 @@
     </appenders>
     <loggers>
         <!-- additivity 开 启 ，由于BasicJdk也属于root，故会打印 2 次 -->
-        <logger name="cn.zain.base.BasicJdk" level="info" additivity="false">
+        <logger name="cn.zain.base.BasicJdk" level="trace" additivity="false">
             <appender-ref ref="Console"/>
             <appender-ref ref="log"/>
             <appender-ref ref="RollingFile"/>
         </logger>
         <!--所有的logger继承root-->
-        <root level="info">
+        <root level="debug">
             <appender-ref ref="Console"/>
         </root>
     </loggers>

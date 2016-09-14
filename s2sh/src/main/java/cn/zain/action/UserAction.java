@@ -9,6 +9,7 @@ import cn.zain.model.po.SysNode;
 import cn.zain.model.po.SysUser;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
+import com.opensymphony.xwork2.config.providers.XmlConfigurationProvider;
 import net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -27,18 +28,32 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by Zain 2016/9/7 .
  */
-public class LoginAction extends BaseAction implements ModelDriven {
-    private Logger logger = LogManager.getLogger(LoginAction.class);
-    private JpaTransactionManager cciLocalTransactionManager;
-    SingletonEhCacheRegionFactory localContainerEntityManagerFactoryBean;
+public class UserAction extends BaseAction implements ModelDriven {
+    private Logger logger = LogManager.getLogger(UserAction.class);
     private SysUser sysUser;
     private SysNode sysNode;
 
     @Override
     public String execute() throws Exception {
-        logger.debug("execute..");
-        if (null != sysUser && "haha".equals(sysUser.getUsername()) && "hehe".equals(sysUser.getPassword()))// 如果登录的用户名=haha并且密码=hehe，就返回SUCCESS；否则，返回LOGIN
+        logger.info("默认的exe");XmlConfigurationProvider l;
+        return  SUCCESS;
+    }
+
+    /**
+     * 功能说明 ：登录
+     *
+     * @return
+     * @author Zain 2016/9/14 10:22
+     * @params
+     */
+    public String login() {
+        logger.debug(sysUser);
+        if (null != sysUser && "haha".equals(sysUser.getUsername())) {
+            logger.info("ok");
+            sysUser.setFullName("wod");
+            request.setAttribute("sysUser", sysUser);
             return SUCCESS;
+        }
         return LOGIN;
     }
 
@@ -64,7 +79,7 @@ public class LoginAction extends BaseAction implements ModelDriven {
     @Override
     public Object getModel() {
         //如果带有密码参数则是用户po
-        if (request.getParameterMap().containsKey("password")) {
+        if (request.getParameterMap().containsKey("username")) {
             if (null == sysUser) {
                 sysUser = new SysUser();
                 return sysUser;
