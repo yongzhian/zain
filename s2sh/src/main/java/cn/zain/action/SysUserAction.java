@@ -28,8 +28,8 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by Zain 2016/9/7 .
  */
-public class UserAction extends BaseAction implements ModelDriven {
-    private Logger logger = LogManager.getLogger(UserAction.class);
+public class SysUserAction extends BaseAction implements ModelDriven {
+    private Logger logger = LogManager.getLogger(SysUserAction.class);
     private SysUser sysUser;
     private SysNode sysNode;
 

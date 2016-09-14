@@ -17,12 +17,13 @@
 <body>
 
 <a href="user/user!userInfo.do">toUserInfo</a>
-	<s:form action="user/user!login.do" method="post"  >
+	<s:form action="user/sysUserlogin.do" method="post"  >
 		<s:label value="系统登陆"></s:label>
 		<s:textfield name="username" label="账号" />
 		<s:password name="password" label="密码" />
 		<s:submit value="登录" />
 	</s:form>
+<a href="sysNode/SysNode_list.do">SysNodeList</a>
 
 </body>
 </html>

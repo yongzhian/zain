@@ -5,15 +5,16 @@
      <!-- 该属性指定需要Struts2处理的请求后缀，该属性的默认值是action，即所有匹配*.action的请求都由Struts2处理。
             如果用户需要指定多个请求后缀，则多个后缀之间以英文逗号（,）隔开。 默认寻找struts-default包下的action-->
     <constant name="struts.action.extension" value="do"/>
-    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
-    <!-- 指定允许上传的文件最大字节数。默认值是2097152(2M) -->
+     <!-- 指定允许上传的文件最大字节数。默认值是2097152(2M) -->
     <constant name="struts.multipart.maxSize" value="1000000000"/>
     <!--解决乱码   -->
     <constant name="struts.i18n.encoding" value="UTF-8"></constant>
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
     <!-- 定义国际化文件名称
     <constant name="struts.custom.i18n.resources" value="globalMessages"/>-->
     <!-- 设置临时文件上传路径 -->
     <constant name="struts.multipart.saveDir" value="/tmp"/>
+
     <!-- 首先，Convention会从根package中寻找包名含有struts,struts2,action或actions的任意packages。
     下一部，Convention从前一步找到的package以及其子package中寻找com.opensymphony.xwork2.Action的实现以及以 Action 结尾的类，
     下面为Convention寻找的类。接下来Convention需要确定 URL 的具体资源部分。
@@ -37,11 +38,18 @@
             <!--<result name="login">index.jsp</result>-->
         <!--</action>-->
     <!--</package>-->
-    <package name="user" namespace="/user" extends="struts-default">
-        <action name="user" class="cn.zain.action.UserAction">
+    <package name="user" namespace="/sysUser" extends="struts-default">
+        <global-allowed-methods>regex:.*</global-allowed-methods>
+        <action name="sysUser*" class="cn.zain.action.SysUserAction" method="{1}">
             <result name="success">/welcome.jsp</result>
             <result name="login">/index.jsp</result>
-            <allowed-methods>login</allowed-methods>
+            <!-- 或者<allowed-methods>login</allowed-methods>-->
+        </action>
+    </package>
+    <package name="node" namespace="/sysNode" extends="struts-default">
+        <global-allowed-methods>regex:.*</global-allowed-methods>
+        <action name="*_*" class="cn.zain.action.{1}Action" method="{2}">
+            <result name="success">/sys/sysnode.jsp</result>
         </action>
     </package>
 
