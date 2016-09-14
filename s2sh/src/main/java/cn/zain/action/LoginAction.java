@@ -9,9 +9,11 @@ import cn.zain.model.po.SysNode;
 import cn.zain.model.po.SysUser;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
+import net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.hibernate.criterion.Criterion;
 import org.springframework.jca.cci.connection.CciLocalTransactionManager;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
@@ -28,7 +30,7 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginAction extends BaseAction implements ModelDriven {
     private Logger logger = LogManager.getLogger(LoginAction.class);
     private JpaTransactionManager cciLocalTransactionManager;
-    LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean;
+    SingletonEhCacheRegionFactory localContainerEntityManagerFactoryBean;
     private SysUser sysUser;
     private SysNode sysNode;
 

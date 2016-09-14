@@ -34,8 +34,10 @@ public class SysUserDaoImpl implements SysUserDao {
 
     @Override
     public SysUser getSysUserByUsername(String username) {
-        String hql = "from SysUser where username = ?";
-        Query query = getSession().createQuery(hql).setString(0,username);
+        String hql = "from SysUser where username = ? ";
+        Query query = getSession().createQuery(hql).setParameter(0, "");
+
         return (SysUser) query.uniqueResult(); //不用处理空
+
     }
 }

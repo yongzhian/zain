@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ehcache>
     <!-- 数据缓存存放目录 -->
-    <diskStore path="/ehcache"/>
+    <diskStore path="java.io.tmpdir/ehcache" />
     <!--
        页面缓存
        三种缓存算法：LRU-最近最少使用、LFU-较少频率使用和FIFO-先进先出。

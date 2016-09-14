@@ -8,7 +8,9 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -16,22 +18,11 @@ import javax.annotation.Resource;
  * Copyright (c) 2016 www.yongzhian.cn. All Rights Reserved.
  */
 @Repository
-public class SysNodeDaoImpl implements SysNodeDao {
+public class SysNodeDaoImpl extends HibernateDaoSupport implements SysNodeDao {
     private Logger logger = LogManager.getLogger(SysNodeDaoImpl.class);
 
-    @Resource
-    private SessionFactory sessionFactory;
-
-    private Session getSession() {
-        if (null == sessionFactory) {
-            logger.error("sessionFactory未成功注入,sessionFactory:" + sessionFactory);
-            return null;
-        }
-        return sessionFactory.getCurrentSession();
-    }
-
+    @Transactional
     public SysNode getSysNodeById(Long sysNodeId) {
-        Criteria criteria = getSession().createCriteria(SysNode.class);
-        return (SysNode) criteria.add(Restrictions.eq("id", sysNodeId)).uniqueResult();
+       return null;
     }
 }
