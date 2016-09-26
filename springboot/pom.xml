@@ -25,6 +25,12 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
+
+    <!--使用Thymeleaf模板引擎进行模板渲染-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
   </dependencies>
   <build>
     <finalName>springboot</finalName>

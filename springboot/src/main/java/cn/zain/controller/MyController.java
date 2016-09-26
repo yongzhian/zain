@@ -1,10 +1,12 @@
 package cn.zain.controller;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Copyright (c) 2016 www.yongzhian.cn. All Rights Reserved.
@@ -17,10 +19,10 @@ import org.springframework.web.bind.annotation.*;
  * @return
  * @params
  */
-@RequestMapping("/sample")
+@RequestMapping("/my")
 @Controller
 @EnableAutoConfiguration
-public class SampleController {
+public class MyController {
     @RequestMapping("/hello")
     @ResponseBody
     String home() {
