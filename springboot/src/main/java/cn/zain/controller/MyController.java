@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @RequestMapping("/my")
 @Controller
-@EnableAutoConfiguration
 public class MyController {
     @RequestMapping("/hello")
     @ResponseBody

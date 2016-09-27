@@ -1,5 +1,10 @@
 package cn.zain.controller;
 
+import cn.zain.config.YzaAddressSettings;
+import cn.zain.config.YzaContactSettings;
+import cn.zain.config.YzaSettings;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
@@ -19,8 +24,17 @@ import org.springframework.web.bind.annotation.*;
  */
 @RequestMapping("/sample")
 @Controller
-@EnableAutoConfiguration
 public class SampleController {
+    private static Logger logger = Logger.getLogger(SampleController.class);
+    @Autowired
+    YzaAddressSettings yzaAddressSettings;
+
+    @Autowired
+    YzaContactSettings yzaContactSettings;
+
+    @Autowired
+    YzaSettings yzaSettings;
+
     @RequestMapping("/hello")
     @ResponseBody
     String home() {
@@ -44,6 +58,9 @@ public class SampleController {
     @RequestMapping(value = "/users/{username}", method = RequestMethod.GET)
     @ResponseBody
     public String userProfile(@PathVariable("username") String username) {
+        logger.info(yzaAddressSettings);
+        logger.info(yzaContactSettings);
+        logger.info(yzaSettings);
         return String.format("user %s", username);
     }
 
