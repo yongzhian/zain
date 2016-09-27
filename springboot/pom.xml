@@ -3,7 +3,6 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>cn.zain</groupId>
   <artifactId>springboot</artifactId>
-  <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>springboot Maven Webapp</name>
   <url>http://maven.apache.org</url>
@@ -21,6 +20,8 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+
+    <!--添加web应用依赖-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -31,8 +32,21 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
+
+    <!--配置简单的安全访问控制-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+
   </dependencies>
   <build>
     <finalName>springboot</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
   </build>
 </project>
