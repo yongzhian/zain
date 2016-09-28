@@ -37,7 +37,6 @@ import javax.annotation.PreDestroy;
 public class Application {
     private static Logger logger = Logger.getLogger(Application.class);
     public static void main(String[] args) {
-
         //启动方式1 ：自定义多controller启动
 //        Object[] os = new Object[]{SampleController.class,MyController.class};
 //
