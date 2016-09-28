@@ -42,6 +42,9 @@ public class SampleController {
     @Autowired
     YzaSettings yzaSettings;
 
+    @Autowired
+    SimpleBean simpleBean;
+
     @RequestMapping("/hello")
     @ResponseBody
     String home() {
@@ -70,6 +73,7 @@ public class SampleController {
         logger.info(yzaSettings);
         logger.info(xmlSettings);
         logger.info(xmlDefaultSettings);
+        logger.info(simpleBean);
         return String.format("user %s", username);
     }
 

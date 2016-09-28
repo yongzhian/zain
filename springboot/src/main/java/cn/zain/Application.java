@@ -59,8 +59,10 @@ public class Application {
 //        springApplication.setBannerMode(Banner.Mode.OFF); //是否开启banner
         springApplication.addListeners(new InitListener()); //添加自定义监听器
         ConfigurableApplicationContext context =  springApplication.run(args);
-        int result = springApplication.exit(context,new ExitListener());// 退出码重置
-        logger.info("result :" + result);
+
+
+//        int result = springApplication.exit(context,new ExitListener());// 退出码重置
+//        logger.info("result :" + result);
     }
 
     @PreDestroy
