@@ -1,6 +1,8 @@
 package cn.zain.controller;
 
+import cn.zain.config.XmlDefaultSettings;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;

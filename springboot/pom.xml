@@ -3,6 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>cn.zain</groupId>
   <artifactId>springboot</artifactId>
+  <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>springboot Maven Webapp</name>
   <url>http://maven.apache.org</url>
@@ -37,6 +38,12 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+
+    <!--各种运维相关的功能的支持，包括性能指标、运行信息和应用管理等-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
 
   </dependencies>

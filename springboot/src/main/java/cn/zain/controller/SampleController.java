@@ -1,12 +1,12 @@
 package cn.zain.controller;
 
-import cn.zain.config.YzaAddressSettings;
-import cn.zain.config.YzaContactSettings;
-import cn.zain.config.YzaSettings;
+import cn.zain.config.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +26,13 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class SampleController {
     private static Logger logger = Logger.getLogger(SampleController.class);
+
+    @Autowired
+    XmlSettings xmlSettings;
+
+    @Autowired
+    XmlDefaultSettings xmlDefaultSettings;
+
     @Autowired
     YzaAddressSettings yzaAddressSettings;
 
@@ -61,6 +68,8 @@ public class SampleController {
         logger.info(yzaAddressSettings);
         logger.info(yzaContactSettings);
         logger.info(yzaSettings);
+        logger.info(xmlSettings);
+        logger.info(xmlDefaultSettings);
         return String.format("user %s", username);
     }
 
