@@ -11,7 +11,7 @@ public class SimpleBean {
     @Value("${yza.address.name}")
     private String name;
 
-    @Value("${my.secret}")
+    @Value("${my.secret:123009}")
     private String randomValue; //随机串如e6aa3fb3410fc893f3654027377cf58a
 
     public String getName() {

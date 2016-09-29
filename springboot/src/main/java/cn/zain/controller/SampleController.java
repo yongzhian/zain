@@ -3,6 +3,7 @@ package cn.zain.controller;
 import cn.zain.config.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -32,6 +33,10 @@ public class SampleController {
 
     @Autowired
     XmlDefaultSettings xmlDefaultSettings;
+
+    @Autowired
+    @Qualifier("ypo")
+    XmlDefaultSettings xmlDefaultSettings1;
 
     @Autowired
     YzaAddressSettings yzaAddressSettings;
@@ -73,6 +78,7 @@ public class SampleController {
         logger.info(yzaSettings);
         logger.info(xmlSettings);
         logger.info(xmlDefaultSettings);
+        logger.info(xmlDefaultSettings1);
         logger.info(simpleBean);
         return String.format("user %s", username);
     }
@@ -85,9 +91,8 @@ public class SampleController {
      * @params
      */
     @RequestMapping("/model/{name}")
-    public String hello(@PathVariable("name") String name, Model model) {
-        model.addAttribute("name", name);
-        return "hello";
+    public String hello(@PathVariable("name") String name, Model model) throws Exception {
+        return "index";
     }
 
 }

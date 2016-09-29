@@ -10,13 +10,16 @@ import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.web.servlet.ErrorPage;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.annotation.PreDestroy;
 
@@ -33,9 +36,12 @@ import javax.annotation.PreDestroy;
         , YzaContactSettings.class
         , YzaSettings.class}) //启用配置
 @ImportResource(locations = {"classpath:config/application-bean.xml"}) //加载配置文件
-@Import(XmlDefaultSettings.class)   //将XmlDefaultSettings注解为一个bean,可在任意地方@Autowired
+//@Import(XmlDefaultSettings.class)   //将XmlDefaultSettings注解为一个bean,可在任意地方@Autowired
 public class Application {
     private static Logger logger = Logger.getLogger(Application.class);
+
+
+
     public static void main(String[] args) {
         //启动方式1 ：自定义多controller启动
 //        Object[] os = new Object[]{SampleController.class,MyController.class};
@@ -57,15 +63,32 @@ public class Application {
         SpringApplication springApplication = new SpringApplication(Application.class);
 //        springApplication.setBannerMode(Banner.Mode.OFF); //是否开启banner
         springApplication.addListeners(new InitListener()); //添加自定义监听器
-        ConfigurableApplicationContext context =  springApplication.run(args);
+        ConfigurableApplicationContext context = springApplication.run(args);
 
 
 //        int result = springApplication.exit(context,new ExitListener());// 退出码重置
 //        logger.info("result :" + result);
     }
 
+    @ExceptionHandler
+    public EmbeddedServletContainerCustomizer containerCustomizer() {
+        return container -> {
+            container.addErrorPages(new ErrorPage(HttpStatus.BAD_REQUEST, "/400.html"), //resources/static 目录下
+                    new ErrorPage(HttpStatus.NOT_FOUND, "/404.html"),
+                    new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/500.html"),
+                    new ErrorPage("/error.html"));
+        };
+    }
+
+    @Bean("ypo")
+    public XmlDefaultSettings get(){
+        XmlDefaultSettings xmlDefaultSettings = new XmlDefaultSettings();
+        xmlDefaultSettings.setUrl("123123jjj");
+        return xmlDefaultSettings;
+    }
+
     @PreDestroy
-    private void exit(){
+    private void exit() {
         logger.info("执行退出清理操作。。。"); //销毁操作
     }
 

@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @RequestMapping("/my")
 @Controller
+
 public class MyController {
     @RequestMapping("/hello")
     @ResponseBody
