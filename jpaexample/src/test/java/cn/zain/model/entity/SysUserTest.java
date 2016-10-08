@@ -1,5 +1,6 @@
 package cn.zain.model.entity;
 
+import cn.zain.dao.SysUserDao;
 import cn.zain.dao.impl.SysUserDaoImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -30,10 +31,24 @@ public class SysUserTest {
     }
 
     @Test
-    public void queryBySpringTest() throws Exception {
+    public void deleteBySpringTest() throws Exception {
 
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
-        SysUserDaoImpl sysUserDaoImpl = (SysUserDaoImpl) context.getBean("sysUserDaoImpl");
-        logger.info(sysUserDaoImpl.getSysUserById(2));
+        SysUserDao sysUserDao = (SysUserDao) context.getBean("sysUserDaoImpl");
+        SysUser sysUser = new SysUser();
+//        SysUser sysUser = sysUserDao.find(7L);
+        sysUser.setId(7L);
+        sysUserDao.delete(sysUser);
+        logger.info(sysUser);
     }
+
+    @Test
+    public void findBySpringTest() throws Exception {
+
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
+        SysUserDao sysUserDao = (SysUserDao) context.getBean("sysUserDaoImpl");
+        SysUser sysUser = sysUserDao.find(1L);
+        logger.info(sysUser);
+    }
+
 }

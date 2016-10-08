@@ -65,4 +65,35 @@
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>
         </property>
     </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="batch*"  propagation="REQUIRED"  isolation="DEFAULT" rollback-for="Exception"/>
+            <tx:method name="save*"   propagation="REQUIRED"  isolation="DEFAULT" rollback-for="Exception"/>
+            <tx:method name="import*" propagation="REQUIRED"  isolation="DEFAULT" rollback-for="Exception"/>
+            <tx:method name="add*"    propagation="REQUIRED"  isolation="DEFAULT" rollback-for="Exception"/>
+            <tx:method name="remove*" propagation="REQUIRED"  isolation="DEFAULT" rollback-for="Exception"/>
+            <tx:method name="delete*" propagation="REQUIRED"  isolation="DEFAULT" rollback-for="Exception"/>
+            <tx:method name="del*" propagation="REQUIRED"  isolation="DEFAULT" rollback-for="Exception"/>
+            <tx:method name="get*"    propagation="REQUIRED"  isolation="DEFAULT"/>
+            <tx:method name="find*"   propagation="REQUIRED"  isolation="DEFAULT"/>
+            <tx:method name="query*"  propagation="REQUIRED"  isolation="DEFAULT"/>
+            <tx:method name="update*" propagation="REQUIRED"  isolation="DEFAULT" rollback-for="Exception"/>
+            <tx:method name="Save*"   propagation="REQUIRED"  isolation="DEFAULT" rollback-for="Exception"/>
+            <tx:method name="batchSave*"   propagation="REQUIRED"  isolation="DEFAULT" rollback-for="Exception"/>
+            <tx:method name="look*"   propagation="REQUIRED"  isolation="DEFAULT" rollback-for="Exception"/>
+            <tx:method name="insert*"  propagation="REQUIRED"  isolation="DEFAULT" rollback-for="Exception"/>
+        </tx:attributes>
+    </tx:advice>
+
+
+    <!-- 配置事务切点，并把切点和事务属性关联起来 -->
+    <aop:config>
+        <aop:pointcut expression="execution(* cn.zain.dao.*.*.*(..))" id="txPointcut"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
+    </aop:config>
 </beans>

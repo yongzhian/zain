@@ -1,18 +1,18 @@
 package cn.zain.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.hibernate.annotations.GeneratorType;
+
+import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * Copyright (c) 2016 www.yongzhian.cn. All Rights Reserved.
  */
 @Entity(name = "sys_user")
-public class SysUser {
+public class SysUser implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column
