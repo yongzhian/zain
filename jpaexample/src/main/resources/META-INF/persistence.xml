@@ -17,6 +17,8 @@
         </properties>
     </persistence-unit>
 
-
+    <!--一般JTA 全局事务,一般用于多个数据库  RESOURCE_LOCAL 本地事务-->
+    <persistence-unit name="springJPA" transaction-type="RESOURCE_LOCAL">
+    </persistence-unit>
 
 </persistence>
