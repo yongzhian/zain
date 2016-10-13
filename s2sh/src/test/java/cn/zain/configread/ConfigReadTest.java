@@ -15,5 +15,7 @@ public class ConfigReadTest {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConfigRead.class);
         ConfigRead configRead = context.getBean(ConfigRead.class);
         logger.info(configRead);
+
+        context.close(); //销毁spring容器对象
     }
 }
