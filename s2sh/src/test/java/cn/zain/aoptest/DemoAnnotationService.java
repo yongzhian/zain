@@ -2,6 +2,7 @@ package cn.zain.aoptest;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 /**
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
  * 注解拦截
  */
 @Service
+@Scope("prototype")
 public class DemoAnnotationService {
     private static Logger logger = LogManager.getLogger(DemoAnnotationService.class);
     @Action(name = "注解拦截")
