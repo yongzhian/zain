@@ -13,6 +13,8 @@ import org.apache.logging.log4j.Logger;
 import org.apache.struts2.convention.annotation.*;
 import org.springframework.stereotype.Controller;
 
+import javax.annotation.Resource;
+
 /**
  * Created by Zain 2016/9/7 .
  */
@@ -23,8 +25,9 @@ import org.springframework.stereotype.Controller;
 
 })
 @Controller
-public class SysRoleAction extends BaseAction implements ModelDriven {
-    private Logger logger = LogManager.getLogger(SysRoleAction.class);
+public class SysroleAction extends BaseAction implements ModelDriven {
+    private Logger logger = LogManager.getLogger(SysroleAction.class);
+    @Resource
     private SysNodeService sysNodeService;
     private SysNode sysNode;
 

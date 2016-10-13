@@ -93,7 +93,4 @@
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
     </aop:config>
 
-    <bean id="sysNodeDaoImpl" class="cn.zain.dao.impl.SysNodeDaoImpl">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
 </beans>

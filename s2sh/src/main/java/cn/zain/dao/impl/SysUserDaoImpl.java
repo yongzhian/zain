@@ -17,6 +17,7 @@ import javax.annotation.Resource;
 @Repository
 public class SysUserDaoImpl implements SysUserDao {
     private Logger logger = LogManager.getLogger(SysUserDaoImpl.class);
+    //采用原生的sessionfactory 不用再配置文件中手动注入
     @Resource
     private SessionFactory sessionFactory;
 
