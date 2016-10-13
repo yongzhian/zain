@@ -1,5 +1,7 @@
 package cn.zain.aoptest;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 /**
@@ -8,7 +10,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class DemoMethodService {
+    private static Logger logger = LogManager.getLogger(DemoMethodService.class);
     public void add(){
-        System.out.println("method add...");
+        logger.info("method add...");
     }
 }
