@@ -17,7 +17,7 @@ public class App4Xml extends Application {
             BorderPane root = (BorderPane) FXMLLoader.load(getClass().getClassLoader().getResource("MainPanel.fxml"));
             Scene scene = new Scene(root, 500, 500);
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Hello World");
+            primaryStage.setTitle("常用工具集");
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();

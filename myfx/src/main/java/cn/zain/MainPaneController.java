@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 /**
  * Copyright (c) 2016 www.yongzhian.cn. All Rights Reserved.
  */
+@Deprecated
 public class MainPaneController {
 
     //    <!--这里的Button对象有需要加@FXML注解，然后变量的名称为你刚才在FXML文件中声明的Button的id属性-->

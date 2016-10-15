@@ -1,0 +1,16 @@
+1 打包为可执行包
+javafxpackager -createjar -appclass [main类]  -srcdir [class文件所在路径] -outdir [可执行jar路径] -outfile [jar文件名称]
+
+demo
+javafxpackager -createjar -appclass cn.zain.App4Xml -srcdir D:\software_dev\JetBrains\IDEA2016.1.3_workspace_git\zain\myfx\target\classes -outdir D:\software_dev\JetBrains\IDEA2016.1.3_workspace_git\zain\myfx\exe\jardir -outfile JavaTools.jar
+
+
+2 生成可执行exe
+
+javafxpackager -deploy -appclass  [main类] -native image -srcdir [jardir ] -outdir [out 目录] -outfile [exe文件名称]
+
+
+javafxpackager -deploy -appclass cn.zain.App4Xml -native image -srcdir D:\software_dev\JetBrains\IDEA2016.1.3_workspace_git\zain\myfx\exe\jardir -outdir D:\software_dev\JetBrains\IDEA2016.1.3_workspace_git\zain\myfx\exe\out -outfile JavaTools
+
+依赖包需要放于lib目录，如果使用mvn clean assembly:assembly 则需要在MANIFEST.MF中
+添加Main-Class: cn.zain.App4Xml
