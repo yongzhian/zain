@@ -137,7 +137,7 @@ public class MainPanelController implements Initializable {
         Map<String, String> params = new HashMap<>();
         for (int i = 0; i < strs.length; i++) {
             if (strs[i].indexOf(":") != -1) {
-                params.put(strs[i].substring(0, strs[i].indexOf(":")), strs[i].substring(strs[i].indexOf(":"), strs[i].length())); //key不能包含：，value可以包含:
+                params.put(strs[i].substring(0, strs[i].indexOf(":")), strs[i].substring(strs[i].indexOf(":")+1, strs[i].length())); //key不能包含：，value可以包含:
             }
         }
 
