@@ -14,3 +14,5 @@ javafxpackager -deploy -appclass cn.zain.App4Xml -native image -srcdir D:\softwa
 
 依赖包需要放于lib目录，如果使用mvn clean assembly:assembly 则需要在MANIFEST.MF中
 添加Main-Class: cn.zain.App4Xml
+
+简易部署可以替换cn.zain.controller目录下的classes文件

@@ -27,30 +27,44 @@
         </MenuBar>
     </top>
 
-   <center>
-      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-        <tabs>
-          <Tab text="String工具">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                         <TextArea fx:id="inputText" layoutX="15.0" layoutY="14.0" prefHeight="62.0" prefWidth="470.0" />
-                         <ChoiceBox fx:id="choiceBox" layoutX="15.0" layoutY="86.0" prefWidth="150.0" />
-                         <Button fx:id="buttonCal" layoutX="291.0" layoutY="86.0" mnemonicParsing="false" onAction="#buttonCalAction" text="计算" />
-                         <Label  layoutX="15.0" layoutY="120.0" fx:id="status"/>
-                         <TextArea fx:id="outputText" layoutX="15.0" layoutY="166.0" prefHeight="147.0" prefWidth="470.0" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="Untitled Tab 2">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
-        </tabs>
-      </TabPane>
-   </center>
+    <center>
+        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <tabs>
+                <Tab text="String工具">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TextArea fx:id="inputText" layoutX="15.0" layoutY="14.0" prefHeight="62.0" prefWidth="470.0" promptText="输入参数" />
+                                <ChoiceBox fx:id="choiceBox" layoutX="15.0" layoutY="86.0" prefWidth="150.0" />
+                                <Button fx:id="buttonCal" layoutX="291.0" layoutY="86.0" mnemonicParsing="false" onAction="#buttonCalAction" text="计算" />
+                                <Label fx:id="status" layoutX="15.0" layoutY="120.0" text="状态" />
+                                <TextArea fx:id="outputText" layoutX="15.0" layoutY="166.0" prefHeight="147.0" prefWidth="470.0" promptText="计算结果" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="HTTP工具 ">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TextArea fx:id="inputText1" layoutX="15.0" layoutY="90.0" prefHeight="45.0" prefWidth="470.0" promptText="请求参数，key：val格式，多个请换行" />
+                                <ChoiceBox fx:id="choiceBox1" layoutX="68.0" layoutY="42.0" prefWidth="150.0" />
+                                <Button fx:id="buttonSend1" layoutX="419.0" layoutY="43.0" mnemonicParsing="false" onAction="#buttonSendAction" text="Send" />
+                                <Label fx:id="status1" layoutX="14.0" layoutY="136.0" text="状态" />
+                                <TextArea fx:id="outputText1" layoutX="15.0" layoutY="166.0" prefHeight="147.0" prefWidth="470.0" promptText="返回结果" />
+                                <TextField fx:id="reqUrl1" layoutX="47.0" layoutY="14.0" prefHeight="23.0" prefWidth="438.0" promptText="请求地址" />
+                                <Label layoutX="14.0" layoutY="18.0" text="URL" />
+                                <Label layoutX="15.0" layoutY="46.0" text="Method" />
+                                <Label layoutX="19.0" layoutY="70.0" text="请求参数，key：val格式，多个请换行" />
+                                <TextField fx:id="auth1" layoutX="247.0" layoutY="44.0" prefHeight="23.0" prefWidth="149.0" promptText="auth格式[dmin:test]" />
+                            </children>
+
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
 
     <bottom>
         <Label text="欢迎使用 Copyright (c) 2016 www.yongzhian.cn. All Rights Reserved." BorderPane.alignment="BOTTOM_LEFT" />
