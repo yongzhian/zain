@@ -1,6 +1,7 @@
 package cn.zain.controller;
 
 import cn.zain.config.*;
+import cn.zain.model.vo.User;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -56,10 +57,20 @@ public class SampleController {
         return "hello world";
     }
 
-    @RequestMapping("/cn")
+    //获取form参数
+    @RequestMapping(value = "/form",method = RequestMethod.POST)
     @ResponseBody
-    String guess() {
-        return "中文测试";
+    String dealForm(@ModelAttribute("user")User user) {
+        logger.info(user);
+        return "接受post form " + user;
+    }
+
+    //获取json参数
+    @RequestMapping(value = "/json",method = RequestMethod.POST)
+    @ResponseBody
+    String dealJson(@RequestBody User user) {
+        logger.info(user);
+        return "接受post json " + user;
     }
 
     /**

@@ -1,23 +1,19 @@
 package cn.zain;
 
-import cn.zain.config.*;
-import cn.zain.listener.ExitListener;
-import cn.zain.listener.InitListener;
+import cn.zain.config.XmlDefaultSettings;
+import cn.zain.config.YzaAddressSettings;
+import cn.zain.config.YzaContactSettings;
+import cn.zain.config.YzaSettings;
+import cn.zain.listener.ApplicationEventListener;
 import org.apache.log4j.Logger;
-import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.SpringBootConfiguration;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.ErrorPage;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -62,7 +58,7 @@ public class Application {
         //启动方式4 banner设置
         SpringApplication springApplication = new SpringApplication(Application.class);
 //        springApplication.setBannerMode(Banner.Mode.OFF); //是否开启banner
-        springApplication.addListeners(new InitListener()); //添加自定义监听器
+        springApplication.addListeners(new ApplicationEventListener()); //添加自定义事件监听器
         ConfigurableApplicationContext context = springApplication.run(args);
 
 
@@ -70,13 +66,15 @@ public class Application {
 //        logger.info("result :" + result);
     }
 
-    @ExceptionHandler
+    @Bean
     public EmbeddedServletContainerCustomizer containerCustomizer() {
+        logger.info("出现异常了...");
         return container -> {
             container.addErrorPages(new ErrorPage(HttpStatus.BAD_REQUEST, "/400.html"), //resources/static 目录下
                     new ErrorPage(HttpStatus.NOT_FOUND, "/404.html"),
                     new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/500.html"),
-                    new ErrorPage("/error.html"));
+                    new ErrorPage("/error.html")
+            );
         };
     }
 
