@@ -34,11 +34,11 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TextArea fx:id="inputText" layoutX="15.0" layoutY="14.0" prefHeight="62.0" prefWidth="470.0" promptText="输入参数" />
+                                <TextArea fx:id="inputText" layoutX="15.0" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="65.0" prefWidth="559.0" promptText="输入参数" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="14.0" />
                                 <ChoiceBox fx:id="choiceBox" layoutX="15.0" layoutY="86.0" prefWidth="150.0" />
                                 <Button fx:id="buttonCal" layoutX="291.0" layoutY="86.0" mnemonicParsing="false" onAction="#buttonCalAction" text="计算" />
                                 <Label fx:id="status" layoutX="15.0" layoutY="120.0" text="状态" />
-                                <TextArea fx:id="outputText" layoutX="15.0" layoutY="166.0" prefHeight="147.0" prefWidth="470.0" promptText="计算结果" />
+                                <TextArea fx:id="outputText" layoutX="15.0" layoutY="166.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="147.0" prefWidth="559.0" promptText="计算结果" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="166.0" />
                             </children>
                         </AnchorPane>
                     </content>
@@ -47,12 +47,12 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TextArea fx:id="inputText1" layoutX="15.0" layoutY="90.0" prefHeight="45.0" prefWidth="470.0" promptText="请求参数，key：val格式，多个请换行" />
+                                <TextArea fx:id="inputText1" layoutX="15.0" layoutY="90.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="566.0" promptText="请求参数，key：val格式，多个请换行" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="90.0" />
                                 <ChoiceBox fx:id="choiceBox1" layoutX="68.0" layoutY="42.0" prefWidth="150.0" />
                                 <Button fx:id="buttonSend1" layoutX="419.0" layoutY="43.0" mnemonicParsing="false" onAction="#buttonSendAction" text="Send" />
                                 <Label fx:id="status1" layoutX="14.0" layoutY="136.0" text="状态" />
-                                <TextArea fx:id="outputText1" layoutX="15.0" layoutY="166.0" prefHeight="147.0" prefWidth="470.0" promptText="返回结果" />
-                                <TextField fx:id="reqUrl1" layoutX="47.0" layoutY="14.0" prefHeight="23.0" prefWidth="438.0" promptText="请求地址" />
+                                <TextArea fx:id="outputText1" layoutX="15.0" layoutY="166.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="147.0" prefWidth="567.0" promptText="返回结果" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="166.0" />
+                                <TextField fx:id="reqUrl1" layoutX="47.0" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="23.0" prefWidth="536.0" promptText="请求地址" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="14.0" />
                                 <Label layoutX="14.0" layoutY="18.0" text="URL" />
                                 <Label layoutX="15.0" layoutY="46.0" text="Method" />
                                 <Label layoutX="19.0" layoutY="70.0" text="请求参数，key：val格式，多个请换行" />

@@ -117,6 +117,14 @@ public class MainPanelController implements Initializable {
                         status.setText("failed\n" + e);
                     }
                     break;
+                case JSON格式化:
+                    try {
+                        outputText.setText(StringTools.jsonFormat(str));
+                        status.setText("JSON内容中不能包含换行符.");
+                    } catch (Exception e) {
+                        status.setText("failed\n" + e);
+                    }
+                    break;
                 default:
                     status.setText("failed 未知类型");
                     break;
@@ -176,13 +184,12 @@ public class MainPanelController implements Initializable {
     private void init() {
         logger.info(choiceBox);
         choiceBox.setItems(FXCollections.observableArrayList(Choice.驼峰形式, Choice.转大写, Choice.转小写, Choice.UTC转时间,
-                Choice.转ASCII_10, Choice.转UNICODE_16));
+                Choice.转ASCII_10, Choice.转UNICODE_16,Choice.JSON格式化));
         choiceBox.setValue(Choice.驼峰形式);
 
         choiceBox1.setItems(FXCollections.observableArrayList( MethodType.GET,MethodType.POST_FORM,
                 MethodType.POST_JSON));
         choiceBox1.setValue(MethodType.GET);
-
     }
 }
 
@@ -193,6 +200,7 @@ enum Choice {
     UTC转时间,
     转ASCII_10,
     转UNICODE_16,
+    JSON格式化,
     ASCII转char,
     NOVALUE;
 

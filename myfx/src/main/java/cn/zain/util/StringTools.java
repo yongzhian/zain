@@ -26,10 +26,11 @@ public class StringTools {
 
     /**
      * 功能说明 : byte数组转base64的字符串
+     *
      * @param buf
      * @return
      */
-    public static String byte2BASE64(byte[] buf){
+    public static String byte2BASE64(byte[] buf) {
         try {
             return new String(new Base64().encode(buf));
         } catch (Exception e) {
@@ -40,6 +41,7 @@ public class StringTools {
 
     /**
      * 功能说明 : 将二进制转换成16进制
+     *
      * @param buf
      * @return
      */
@@ -57,19 +59,21 @@ public class StringTools {
 
     /**
      * 功能说明 : 生成指定长度的随机数 纯数字
+     *
      * @param len
      * @return
      */
     public static String genRandomNum(int len) {
         StringBuffer result = new StringBuffer();
         for (int i = 0; i < len; i++) {
-            result.append((int)(Math.random() * 10));
+            result.append((int) (Math.random() * 10));
         }
         return result.toString();
     }
 
     /**
      * 功能说明 : 生成指定长度的随机字符串
+     *
      * @param length
      * @return
      */
@@ -86,6 +90,7 @@ public class StringTools {
 
     /**
      * 功能说明 : 从map中获取key并转为Long
+     *
      * @param map
      * @param key
      * @return
@@ -99,6 +104,7 @@ public class StringTools {
 
     /**
      * 功能说明 : 获取当前时间 格式 yyyy-MM-dd HH:mm:ss
+     *
      * @return
      */
     public static String getNow() {
@@ -107,6 +113,7 @@ public class StringTools {
 
     /**
      * 功能说明 : 获取当前时间，自定义格式
+     *
      * @param format
      * @return
      */
@@ -118,14 +125,15 @@ public class StringTools {
 
     /**
      * 功能说明 : 获取当前时间，自定义格式
+     *
      * @param format
      * @return
      */
-    public static String getFormatDate(String format,Date date) {
-        if(null == date){
+    public static String getFormatDate(String format, Date date) {
+        if (null == date) {
             return null;
         }
-        if(StringUtils.isBlank(format)){
+        if (StringUtils.isBlank(format)) {
             format = "yyyy-MM-dd HH:mm:ss";
         }
         SimpleDateFormat sdf = new SimpleDateFormat(format);
@@ -134,6 +142,7 @@ public class StringTools {
 
     /**
      * 功能说明 : 获取当前日期 格式 yyyy-MM-dd
+     *
      * @return
      */
     public static String getNowDate() {
@@ -141,7 +150,8 @@ public class StringTools {
     }
 
     /**
-     *  功能说明 :从map中获取key的值,默认为""
+     * 功能说明 :从map中获取key的值,默认为""
+     *
      * @param map
      * @param key
      * @return
@@ -152,6 +162,7 @@ public class StringTools {
 
     /**
      * 功能说明 :从map中获取key的值,默认为defaultStr
+     *
      * @param map
      * @param key
      * @param defaultStr
@@ -166,17 +177,19 @@ public class StringTools {
 
     /**
      * 功能说明 : 获取字符串最后4个字符，若空或小于等于4位则直接返回
+     *
      * @return
      */
     public static String getLast4Char(String srcStr) {
-        if(StringUtils.isBlank(srcStr) || srcStr.length() <= 4){
+        if (StringUtils.isBlank(srcStr) || srcStr.length() <= 4) {
             return srcStr;
         }
-        return "****" + srcStr.substring(srcStr.length()-4,srcStr.length());
+        return "****" + srcStr.substring(srcStr.length() - 4, srcStr.length());
     }
 
     /**
      * 功能说明 : 将16进制转换为二进制
+     *
      * @param hexStr
      * @return
      */
@@ -195,11 +208,12 @@ public class StringTools {
 
     /**
      * 功能说明 : 判断字符串是否是1-100的数字
+     *
      * @param str
      * @return
      */
-    public static boolean isOne2HundredNumber(String str){
-        if(null == str || StringUtils.isBlank(str)){
+    public static boolean isOne2HundredNumber(String str) {
+        if (null == str || StringUtils.isBlank(str)) {
             return false;
         }
         Pattern pattern = Pattern.compile("[1-9]\\d?|100");
@@ -208,11 +222,12 @@ public class StringTools {
 
     /**
      * 功能说明 : 判断字符串是否是0-100的数字
+     *
      * @param str
      * @return
      */
-    public static boolean isZero2HundredNumber(String str){
-        if(StringUtils.isBlank(str)){
+    public static boolean isZero2HundredNumber(String str) {
+        if (StringUtils.isBlank(str)) {
             return false;
         }
         Pattern pattern = Pattern.compile("[1-9]\\d?|100|0");
@@ -222,11 +237,12 @@ public class StringTools {
 
     /**
      * 功能说明 : 判断字符串是否全是数字
+     *
      * @param str
      * @return
      */
-    public static boolean isNumber(String str){
-        if(null == str || StringUtils.isBlank(str)){
+    public static boolean isNumber(String str) {
+        if (null == str || StringUtils.isBlank(str)) {
             return false;
         }
         Pattern pattern = Pattern.compile("[0-9]*");
@@ -235,27 +251,29 @@ public class StringTools {
 
     /**
      * 功能说明 : 判断字符串是否是指定长度的数字
+     *
      * @param str
      * @return
      */
-    public static boolean isNumber(String str,int len){
-        if(StringUtils.isBlank(str)){
+    public static boolean isNumber(String str, int len) {
+        if (StringUtils.isBlank(str)) {
             return false;
         }
-        Pattern pattern = Pattern.compile("[0-9]{"+len + "}");
+        Pattern pattern = Pattern.compile("[0-9]{" + len + "}");
         return pattern.matcher(str).matches();
     }
 
     /**
      * 功能说明 : 判断字符串是否是指定范围长度的数字
+     *
      * @param str
      * @return
      */
-    public static boolean isNumber(String str,int minLen,int maxLen){
-        if(StringUtils.isBlank(str)){
+    public static boolean isNumber(String str, int minLen, int maxLen) {
+        if (StringUtils.isBlank(str)) {
             return false;
         }
-        Pattern pattern = Pattern.compile("[0-9]{"+minLen +  ","+ maxLen + "}");
+        Pattern pattern = Pattern.compile("[0-9]{" + minLen + "," + maxLen + "}");
         return pattern.matcher(str).matches();
     }
 
@@ -265,11 +283,12 @@ public class StringTools {
      * StringUtils.isNumeric("12-3") = false
      * StringUtils.isNumeric("12.3") = false
      * StringUtils.isNumeric("12.3") = true
+     *
      * @param str
      * @return
      */
-    public static boolean isDecimal(String str){
-        if(StringUtils.isBlank(str)){
+    public static boolean isDecimal(String str) {
+        if (StringUtils.isBlank(str)) {
             return false;
         }
         Pattern pattern = Pattern.compile("-?[0-9]+\\.*[0-9]*");
@@ -277,12 +296,28 @@ public class StringTools {
     }
 
     /**
+     * 功能说明 ：是否是小数 最大长度maxBit
+     *
+     * @return
+     * @author Zain 2016/10/18 16:50
+     * @params
+     */
+    public static boolean isDecimal(String str, int maxBit) {
+        if (StringUtils.isBlank(str)) {
+            return false;
+        }
+        Pattern pattern = Pattern.compile("-?[0-9]+\\.*[0-9]{0," + maxBit + "}");
+        return pattern.matcher(str).matches();
+    }
+
+    /**
      * 功能说明 : 判断字符串是否是不包含非空白字符零次或多次
+     *
      * @param str
      * @return
      */
-    public static boolean isNotBlankStr(String str){
-        if(null == str || StringUtils.isBlank(str)){
+    public static boolean isNotBlankStr(String str) {
+        if (null == str || StringUtils.isBlank(str)) {
             return false;
         }
         Pattern pattern = Pattern.compile("[\\S]+");
@@ -291,11 +326,12 @@ public class StringTools {
 
     /**
      * 功能说明 : 判断字符串是否是不包含非空白字符零次或多次
+     *
      * @param str
      * @return
      */
-    public static boolean isNotBlankStr(String str,int min,int max){
-        if(null == str || StringUtils.isBlank(str)){
+    public static boolean isNotBlankStr(String str, int min, int max) {
+        if (null == str || StringUtils.isBlank(str)) {
             return false;
         }
         Pattern pattern = Pattern.compile("[\\S]{" + min + "," + max + "}");
@@ -304,6 +340,7 @@ public class StringTools {
 
     /**
      * 功能说明 : 判断对象是否为空，如果空返回""
+     *
      * @param obj
      * @return
      */
@@ -313,6 +350,7 @@ public class StringTools {
 
     /**
      * 功能说明 : 判断对象是否为空，如果空返回defaultStr
+     *
      * @param obj
      * @param defaultStr
      * @return
@@ -322,20 +360,22 @@ public class StringTools {
             return defaultStr;
         }
 
-        String str = obj.toString();;
+        String str = obj.toString();
+        ;
 
         return StringUtils.isBlank(str) ? defaultStr : str;
     }
 
     /**
      * 功能说明 : 对象转Int
+     *
      * @param obj
      * @return
      */
     public static int obj2Int(Object obj) {
         String str = StringTools.nvl(obj);
 
-        if(StringUtils.isBlank(str)) {
+        if (StringUtils.isBlank(str)) {
             return 0;
         }
 
@@ -348,6 +388,7 @@ public class StringTools {
 
     /**
      * 功能说明 : 对象转long
+     *
      * @param obj
      * @return
      */
@@ -362,6 +403,7 @@ public class StringTools {
 
     /**
      * 功能说明 : 对象转Double
+     *
      * @param obj
      * @return
      */
@@ -376,27 +418,29 @@ public class StringTools {
 
     /**
      * 功能说明 : 将多个string合并为一个字符串
+     *
      * @param div
      * @param strs
      * @return
      */
-    public static String packString(String div,String...strs){
+    public static String packString(String div, String... strs) {
         StringBuffer sb = new StringBuffer();
-        for(String str:strs){
+        for (String str : strs) {
             sb.append(str).append(div);
         }
-        return sb.toString().toUpperCase().substring(0, sb.length()-1);
+        return sb.toString().toUpperCase().substring(0, sb.length() - 1);
     }
 
     /**
      * 功能说明 : 将多个string合并为一个字符串,并添加一个5位随机数
+     *
      * @param div
      * @param strs
      * @return
      */
-    public static String packStringPlusNumber(String div,String...strs){
+    public static String packStringPlusNumber(String div, String... strs) {
         StringBuffer sb = new StringBuffer();
-        for(String str:strs){
+        for (String str : strs) {
             sb.append(str).append(div);
         }
         return sb.append(genRandomNum(3)).toString().toUpperCase();
@@ -404,6 +448,7 @@ public class StringTools {
 
     /**
      * 功能说明：解析机器人位置json，生成Map格式的位置信息。
+     *
      * @param jsonStr
      * @return
      */
@@ -418,22 +463,22 @@ public class StringTools {
         }
 
         Map<String, String> locationMap = new HashMap<String, String>();
-        if(location.containsKey("province")) {
+        if (location.containsKey("province")) {
             String province = location.getString("province");
             locationMap.put("province", province);
         }
 
-        if(location.containsKey("city")) {
+        if (location.containsKey("city")) {
             String city = location.getString("city");
             locationMap.put("city", city);
         }
 
-        if(location.containsKey("district")) {
+        if (location.containsKey("district")) {
             String district = location.getString("district");
             locationMap.put("district", district);
         }
 
-        if(location.containsKey("address")) {
+        if (location.containsKey("address")) {
             String address = location.getString("address");
             locationMap.put("address", address);
         }
@@ -443,11 +488,12 @@ public class StringTools {
 
     /**
      * 功能说明：去掉BOM头。
+     *
      * @param bt
      * @return
      */
     public static byte[] removeBOM(byte[] bt) {
-        if(null==bt || bt.length<3) {
+        if (null == bt || bt.length < 3) {
             return bt;
         }
 
@@ -463,6 +509,7 @@ public class StringTools {
 
     /**
      * 功能说明：去掉BOM头。
+     *
      * @param str
      * @return
      */
@@ -483,6 +530,7 @@ public class StringTools {
 
     /**
      * 功能说明 ：将字符串采用base64解密得到byte
+     *
      * @param str
      * @return
      */
@@ -497,6 +545,7 @@ public class StringTools {
 
     /**
      * 功能说明 ：将字符串转日期
+     *
      * @param dateStr
      * @return
      */
@@ -506,7 +555,7 @@ public class StringTools {
         }
 
         SimpleDateFormat sdf = null;
-        if(dateStr.length() == 10) {
+        if (dateStr.length() == 10) {
             sdf = new SimpleDateFormat("yyyy-MM-dd");
         } else {
             sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -523,8 +572,9 @@ public class StringTools {
 
     /**
      * 功能说明 ：时间转字符串
-     * @author	Zain 2016/10/14 10:33
+     *
      * @return
+     * @author Zain 2016/10/14 10:33
      * @params
      */
     public static String date2Str(Date dt) {
@@ -533,8 +583,9 @@ public class StringTools {
 
     /**
      * 功能说明 ：时间转指定格式字符串
-     * @author	Zain 2016/10/14 10:33
+     *
      * @return
+     * @author Zain 2016/10/14 10:33
      * @params
      */
     public static String date2Str(Date dt, String format) {
@@ -548,6 +599,7 @@ public class StringTools {
 
     /**
      * 功能说明 : str转Int
+     *
      * @param str
      * @return
      */
@@ -557,6 +609,7 @@ public class StringTools {
 
     /**
      * 功能说明 : str转long
+     *
      * @param str
      * @return
      */
@@ -566,11 +619,12 @@ public class StringTools {
 
     /**
      * 功能说明 : 判断字符串是否为一版本串 类似1.1.1
+     *
      * @param versionStr
      * @return
      */
     public static boolean isVersionStr(String versionStr) {
-        if(StringUtils.isBlank(versionStr)){
+        if (StringUtils.isBlank(versionStr)) {
             return false;
         }
         Pattern pattern = Pattern.compile("(\\d)+(\\.\\d+)+");
@@ -579,11 +633,12 @@ public class StringTools {
 
     /**
      * 功能说明 : 判断字符串是否为一id连接串1,2,3
+     *
      * @param idsStr
      * @return
      */
     public static boolean isIDSStr(String idsStr) {
-        if(StringUtils.isBlank(idsStr)){
+        if (StringUtils.isBlank(idsStr)) {
             return false;
         }
         Pattern pattern = Pattern.compile("\\d+[,\\d]+");
@@ -593,6 +648,7 @@ public class StringTools {
     /**
      * 功能说明 : 字符串形式的版本比较   0表示相等;正数表示currVer大于latestVer正常不存在该情况 ;负数表示currVer小于latestVer
      * 版本规则不一致可能报错，外部处理
+     *
      * @param currVer
      * @param latestVer
      * @return
@@ -600,7 +656,7 @@ public class StringTools {
     public static int checkVerStr(String currVer, String latestVer) {
         if (currVer.indexOf(".") == -1 && latestVer.indexOf(".") == -1) { //均无下级
             return Long.valueOf(currVer).compareTo(Long.valueOf(latestVer));
-        }else if(currVer.indexOf(".") == -1 || latestVer.indexOf(".") == -1){ //当前版本无下级
+        } else if (currVer.indexOf(".") == -1 || latestVer.indexOf(".") == -1) { //当前版本无下级
             return currVer.compareTo(latestVer);
         }
         String currVerSub = currVer.substring(0, currVer.indexOf("."));
@@ -615,14 +671,15 @@ public class StringTools {
 
     /**
      * 功能说明 ：计算2个时间的间隔天数
+     *
      * @param begin
      * @param end
      * @return
      * @throws Exception
      */
-    public static long getDistanceDays(Long begin, Long end){
-        if(null == begin || null == end || begin > end){
-            logger.info("起止时间逻辑错误，存在空或起大于止，begin ：" + begin +  "end : " + end);
+    public static long getDistanceDays(Long begin, Long end) {
+        if (null == begin || null == end || begin > end) {
+            logger.info("起止时间逻辑错误，存在空或起大于止，begin ：" + begin + "end : " + end);
             return 0;
         }
         return (end - begin) / (1000 * 60 * 60 * 24);
@@ -631,6 +688,7 @@ public class StringTools {
     /**
      * 替换字符串并让它的下一个字母为大写,如将server_desc 转换为serverDesc replacePre为大写字母前的字符
      * *Jmh测试 thrpt   20  10145.305 ± 95.140  ops/ms
+     *
      * @param srcStr
      * @param divSign
      * @param replacePre
@@ -654,8 +712,9 @@ public class StringTools {
     /**
      * 功能说明 ：讲类似将server_desc转换为驼峰形式serverDesc
      * Jmh 测试 thrpt   20   6151.836 ± 63.147  ops/ms
-     * @author	Zain 2016/7/20  11:42
-     * @return  result
+     *
+     * @return result
+     * @author Zain 2016/7/20  11:42
      * @params
      */
     public static String toCamelCase(String stringWithUnderline) {
@@ -666,14 +725,13 @@ public class StringTools {
         char[] fromArray = stringWithUnderline.toCharArray();
         char[] toArray = new char[fromArray.length];
         int j = 0;
-        for (int i=0; i<fromArray.length; i++) {
+        for (int i = 0; i < fromArray.length; i++) {
             if (fromArray[i] == '_') {
                 // 当前字符为下划线时，将指针后移一位，将紧随下划线后面一个字符转成大写并存放
                 i++;
                 if (i < fromArray.length)
                     toArray[j++] = Character.toUpperCase(fromArray[i]);
-            }
-            else {
+            } else {
                 toArray[j++] = fromArray[i];
             }
         }
@@ -682,6 +740,7 @@ public class StringTools {
 
     /**
      * 字符串大写字母转下划线并小写
+     *
      * @param srcStr
      * @return
      */
@@ -704,15 +763,16 @@ public class StringTools {
     /**
      * 功能说明 ：map转为form格式 用于http请求
      * author	Zain 2016年7月6日  下午3:50:26
+     *
      * @param map
      * @return
      */
-    public static String map2FormStr(Map<String,Object> map){
-        if(null == map || map.isEmpty()){
+    public static String map2FormStr(Map<String, Object> map) {
+        if (null == map || map.isEmpty()) {
             return null;
         }
         StringBuffer sb = new StringBuffer();
-        for(String key :map.keySet()){
+        for (String key : map.keySet()) {
             sb.append(key).append("=").append(map.get(key)).append("&");
         }
         return sb.toString();
@@ -720,15 +780,67 @@ public class StringTools {
 
     /**
      * 功能说明 ：判断字符串是否是24小时的hh:mm格式
-     * @author	Zain 2016/9/24 10:48
+     *
      * @return
+     * @author Zain 2016/9/24 10:48
      * @params
      */
-    public static boolean is24hTime(String timeStr){
-        if(StringUtils.isBlank(timeStr)){
+    public static boolean is24hTime(String timeStr) {
+        if (StringUtils.isBlank(timeStr)) {
             return false;
         }
         Pattern pattern = Pattern.compile("([01]\\d|2[0-3]):[0-5]\\d");
         return pattern.matcher(timeStr).matches();
+    }
+
+    /**
+     * 功能说明 ：将json字符串进行格式化,不能包含换行符
+     * @author	Zain 2016/10/27 10:09
+     * @return
+     * @params
+     */
+    public static String jsonFormat(String jsonStr) {
+        if (StringUtils.isBlank(jsonStr)) {
+            return "参数错误";
+        }
+        jsonStr = jsonStr.replace("\n","");
+        int level = 0;
+        StringBuffer jsonForMatStr = new StringBuffer();
+        for (int i = 0; i < jsonStr.length(); i++) {
+            char c = jsonStr.charAt(i);
+            if (level > 0 && '\n' == jsonForMatStr.charAt(jsonForMatStr.length() - 1)) {
+                jsonForMatStr.append(getLevelStr(level));
+            }
+            switch (c) {
+                case '{':
+                case '[':
+                    jsonForMatStr.append(c + "\n");
+                    level++;
+                    break;
+                case ',':
+                    jsonForMatStr.append(c + "\n");
+                    break;
+                case '}':
+                case ']':
+                    jsonForMatStr.append("\n");
+                    level--;
+                    jsonForMatStr.append(getLevelStr(level));
+                    jsonForMatStr.append(c);
+                    break;
+                default:
+                    jsonForMatStr.append(c);
+                    break;
+            }
+        }
+
+        return jsonForMatStr.toString();
+    }
+
+    private static String getLevelStr(int level) {
+        StringBuffer levelStr = new StringBuffer();
+        for (int levelI = 0; levelI < level; levelI++) {
+            levelStr.append("\t");
+        }
+        return levelStr.toString();
     }
 }
