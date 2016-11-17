@@ -59,6 +59,14 @@
       <version>2.5</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/com.google.zxing/core 主要用于二维码 -->
+    <dependency>
+      <groupId>com.google.zxing</groupId>
+      <artifactId>core</artifactId>
+      <version>3.3.0</version>
+    </dependency>
+
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
