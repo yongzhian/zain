@@ -1,5 +1,6 @@
 package cn.zain.controller;
 
+import cn.zain.constans.SysConstants;
 import cn.zain.controller.action.HttpToolTabButtonAction;
 import cn.zain.controller.action.QrcodeTabButtonAction;
 import cn.zain.controller.action.StringToolTabButtonAction;
@@ -9,10 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.apache.commons.lang.StringUtils;
@@ -88,6 +86,13 @@ public class MainPanelController implements Initializable {
         stringToolTabButtonAction.init(choiceBox,inputText,outputText,status);
         httpToolTabButtonAction.init(choiceBox1,inputText1,outputText1,status1,reqUrl1,auth1);
         qrcodeTabButtonAction.init(inputText2,barImage2,label2);
+    }
+
+    @FXML
+    private void itemAboutAction(ActionEvent event){
+        Alert alert = new Alert(Alert.AlertType.NONE,SysConstants.VERSION_INFO,ButtonType.CLOSE);
+        alert.setTitle("About");
+        alert.showAndWait();
     }
 
     /**

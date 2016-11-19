@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.zain.controller.MainPanelController">
@@ -21,7 +22,7 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
+                        <MenuItem mnemonicParsing="false" onAction="#itemAboutAction" text="About" />
                     </items>
                 </Menu>
             </menus>
@@ -82,7 +83,10 @@
     </center>
 
     <bottom>
-        <Label text="欢迎使用 Copyright (c) 2016 www.yongzhian.cn. All Rights Reserved." BorderPane.alignment="BOTTOM_LEFT" />
+        <Label text="欢迎使用 Copyright (c) 2016 www.yongzhian.cn. All Rights Reserved." BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="5.0" />
+         </BorderPane.margin></Label>
     </bottom>
 
 </BorderPane>

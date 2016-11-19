@@ -50,8 +50,7 @@ public class StringToolTabButtonAction implements ControlAction {
     @Override
     public void init(Object ... objs) {
         initControl(objs);
-        logger.info(choiceBox);
-        choiceBox.setItems(FXCollections.observableArrayList(Choice.驼峰形式, Choice.转大写, Choice.转小写, Choice.UTC转时间,
+         choiceBox.setItems(FXCollections.observableArrayList(Choice.驼峰形式, Choice.转大写, Choice.转小写, Choice.UTC转时间,
                 Choice.转ASCII_10, Choice.转UNICODE_16,Choice.JSON格式化));
         choiceBox.setValue(Choice.驼峰形式);
 
