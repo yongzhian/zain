@@ -3,7 +3,7 @@ javafxpackager -createjar -appclass [main类]  -srcdir [class文件所在路径]
 
 demo
 javafxpackager -createjar -appclass cn.zain.App4Xml -srcdir D:\software_dev\JetBrains\IDEA2016.1.3_workspace_git\zain\myfx\target\classes -outdir D:\software_dev\JetBrains\IDEA2016.1.3_workspace_git\zain\myfx\exe\jardir -outfile JavaTools.jar
-
+注意classes 目录需要包含依赖，否则需要放到lib目录否则会报错
 
 2 生成可执行exe
 

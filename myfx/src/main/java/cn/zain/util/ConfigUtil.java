@@ -72,7 +72,7 @@ public class ConfigUtil {
 
     public static String readFileAsString(String fileName) {
         try(InputStream stream = ConfigUtil.class.getClassLoader().getResourceAsStream(fileName);
-            BufferedReader br = new BufferedReader(new InputStreamReader(stream))) {
+            BufferedReader br = new BufferedReader(new InputStreamReader(stream,"utf-8"))) {
             String line = br.readLine();
             StringBuffer sb = new StringBuffer();
             while (null != line){
