@@ -75,10 +75,23 @@ public class MainPanelController implements Initializable {
 
     //------------------------------------------------
 
+    //-------------------文件加密-----------------------------
+
+    @FXML
+    private TextArea inputText3;
+
+    @FXML
+    private Label result3;
+
+    @FXML
+    private TextArea outputText3;
+
+    //------------------------------------------------
+
     private StringToolTabButtonAction stringToolTabButtonAction = StringToolTabButtonAction.getInstance();
     private HttpToolTabButtonAction httpToolTabButtonAction = HttpToolTabButtonAction.getInstance();
     private QrcodeTabButtonAction qrcodeTabButtonAction = QrcodeTabButtonAction.getInstance();
-
+    private FileCodeButtonAction fileCodeButtonAction = FileCodeButtonAction.getInstance();
 
 
     @Override
@@ -86,6 +99,7 @@ public class MainPanelController implements Initializable {
         stringToolTabButtonAction.init(choiceBox,inputText,outputText,status);
         httpToolTabButtonAction.init(choiceBox1,inputText1,outputText1,status1,reqUrl1,auth1);
         qrcodeTabButtonAction.init(inputText2,barImage2,label2);
+        fileCodeButtonAction.init(inputText3,result3,outputText3);
     }
 
     @FXML
@@ -126,6 +140,17 @@ public class MainPanelController implements Initializable {
     @FXML
     private void buttonGenerateAction(ActionEvent event) {
         qrcodeTabButtonAction.doAction(event,inputText2,barImage2,label2);
+    }
+
+    /**
+     * 功能说明 ：文件md5等计算 tab工具
+     * @author	Zain 2016/11/17 10:30
+     * @return
+     * @params
+     */
+    @FXML
+    public void buttonFileCalAction(ActionEvent event) {
+        fileCodeButtonAction.doAction(event,inputText3,result3,outputText3);
     }
 }
 

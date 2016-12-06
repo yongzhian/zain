@@ -2,11 +2,18 @@ package cn.zain.util;
 
 import net.sf.json.JSONObject;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.security.DigestInputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -842,5 +849,20 @@ public class StringTools {
             levelStr.append("\t");
         }
         return levelStr.toString();
+    }
+
+    /**
+     * 功能说明：计算文件MD5值。
+     * @param inputFile
+     * @return
+     * @throws IOException
+     */
+    public static String fileMD5(String inputFile) {
+        try(FileInputStream fileInputStream = new FileInputStream(inputFile)) {
+            return  DigestUtils.md5Hex(IOUtils.toByteArray(fileInputStream));
+        } catch (IOException e) {
+            logger.error("加密失败。inputFile: "+inputFile,e);
+            return null;
+        }
     }
 }

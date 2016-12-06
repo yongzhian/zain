@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -69,11 +69,24 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                          <Label layoutX="14.0" layoutY="18.0" text="文本" />
-                         <TextArea fx:id="inputText2" layoutX="16.0" layoutY="44.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="566.0" promptText="文本内容" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="44.0" />
+                         <TextArea fx:id="inputText2" layoutX="16.0" layoutY="44.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="80.0" prefWidth="566.0" promptText="文本内容" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="44.0" />
                          <Button fx:id="buttonGenerate2" layoutX="445.0" layoutY="14.0" mnemonicParsing="false" onAction="#buttonGenerateAction" text="generate" />
                          <Label fx:id="result2" layoutX="14.0" layoutY="136.0" text="结果" />
                          <ImageView fx:id="barImage2" fitHeight="200.0" fitWidth="200.0" layoutX="50.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true" />
                          <Label fx:id="label2" layoutX="300.0" layoutY="150.0" text="" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="文件编码">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="18.0" text="文件" />
+                        <TextArea fx:id="inputText3" layoutX="16.0" layoutY="44.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="80.0" prefWidth="566.0" promptText="目录或文件路径" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="44.0" />
+                        <Button fx:id="buttonFileCal3" layoutX="445.0" layoutY="14.0" mnemonicParsing="false" onAction="#buttonFileCalAction" text="计算" />
+                        <Label fx:id="result3" layoutX="14.0" layoutY="136.0" text="结果" />
+                         <TextArea fx:id="outputText3" layoutX="15.0" layoutY="166.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="147.0" prefWidth="559.0" promptText="计算结果" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="166.0" />
                      </children>
                   </AnchorPane>
                </content>
