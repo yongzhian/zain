@@ -1,0 +1,47 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.flwrobot.dao.RobotDao">
+	
+	<resultMap type="com.flwrobot.entity.Robot" id="RobotResult">
+		<id column="id" property="id"/>
+		<id column="robot_sn" property="robotSN"/>
+		<id column="robot_type" property="robotType"/>
+		<id column="production_date" property="productionDate"/>
+		<id column="first_use_date" property="firstUseDate"/>
+	</resultMap>
+
+	<select id="countAll" resultType="int">  <!-- 查询表中记录总数 -->
+		select count(*) c from robot;
+	</select>
+
+	<select id="selectAll" resultType="com.flwrobot.entity.Robot">    <!-- 查询表中的所有机器人信息 -->
+		select * from robot order by id desc
+	</select>
+
+	<insert id="insert" parameterType="com.flwrobot.entity.Robot">    <!-- 向数据库中插入机器人信息 -->
+		insert into robot(robot_sn, robot_type, production_date)
+		values(#{robotSN},#{robotType},#{productionDate})
+	</insert>
+
+	<update id="update" parameterType="com.flwrobot.entity.Robot">     <!-- 设置机器人首次使用日期 -->
+		update robot set first_use_date = #{firstUseDate}
+		where robot_sn=#{robotSN}
+	</update>
+
+	<delete id="delete" parameterType="String">    <!-- 删除机器人 -->
+		delete from robot where robot_sn=#{robotSN}
+	</delete>
+
+	<select id="findByRobotSN" parameterType="String" resultMap="RobotResult"> <!-- 根据SN查找机器人 -->
+		select * from robot where robot_sn=#{robotSN}
+	</select>
+
+	<select id="getRobotUsers" resultType="map">
+		select ur.id, ur.user_id, ur.robot_id, ur.bind_time, ur.robot_nick, ur.master_nick, ur.priority, r.robot_sn, r.robot_type,
+			u.phone_no, u.family_name, u.full_name, u.gender
+		from user_robot ur, user u, robot r
+		where ur.user_id = u.id and ur.robot_id = r.id
+		and u.is_valid = 'T' and r.is_valid = 'T' and ur.is_valid = 'T'
+		and r.robot_sn = #{robotSN}
+		order by ur.priority asc, ur.id asc
+	</select>
+</mapper>

@@ -1,0 +1,122 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.flwrobot.dao.CommunityRoomAlarmDao">
+
+	<resultMap type="com.flwrobot.entity.CommunityRoomAlarm" id="communityRoomAlarm">
+		<id column="id" property="id"/>
+		<id column="room_id" property="roomId"/>
+		<id column="robot_id" property="robotId"/> 
+		<id column="alarm_time" property="alarmTime"/>
+		<id column="alarm_name" property="alarmName"/>
+		<id column="alarm_msg" property="alarmMsg"/>
+		
+		<id column="read_time" property="readTime"/>
+		
+		<id column="alarm_type" property="alarmType"/>
+		<id column="handle_people" property="handlePeople"/>
+		<id column="handle_time" property="handleTime"/>
+		<id column="handle_result" property="handleResult"/>
+		<id column="handle_remark" property="handleRemark"/>
+		
+		<id column="buiding_no" property="buildingNO"/>
+		<id column="room_no" property="roomNO"/>
+		<id column="owner_name" property="ownerName"/>
+		<id column="owner_tel" property="ownerTel"/>
+	</resultMap>
+	
+	<select id="getRoomAlarmNumByCondition" resultType="long">
+		SELECT COUNT(1)
+		FROM community_room_alarm cra, community_room cr, community_buiding cb
+		<trim prefix="WHERE" prefixOverrides="AND">
+			cra.room_id = cr.id AND cr.buiding_id = cb.id  
+			<if test="conditionMap.containsKey('handleResult')">
+				AND cra.handle_result=#{conditionMap.handleResult}
+			</if>
+			<if test="conditionMap.containsKey('notHandleResult')">
+				AND cra.handle_result!=#{conditionMap.notHandleResult}
+			</if>
+			<if test="conditionMap.containsKey('communityManagementId')">
+				AND cb.management_id = #{conditionMap.communityManagementId}
+			</if>
+			<if test="conditionMap.containsKey('buidingId')">
+				AND cr.buiding_id = #{conditionMap.buidingId}
+			</if>
+			<if test="conditionMap.containsKey('roomId')">
+				AND cra.room_id = #{conditionMap.roomId}
+			</if>
+			<if test="conditionMap.containsKey('alarmTimeFrom')">
+				AND cra.alarm_time >= #{conditionMap.alarmTimeFrom}
+			</if>
+			<if test="conditionMap.containsKey('alarmTimeTo')">
+				<![CDATA[
+					AND cra.alarm_time <= #{conditionMap.alarmTimeTo}
+				]]>
+			</if>
+		</trim>
+	</select>
+	
+	<select id="getRoomAlarmListByCondition"   parameterType="Map" resultMap="communityRoomAlarm">
+		SELECT cra.*,cb.buiding_no,cr.room_no,cr.owner_name,cr.owner_tel
+		FROM community_room_alarm cra, community_room cr, community_buiding cb
+		<trim prefix="WHERE" prefixOverrides="AND">
+			cra.room_id = cr.id AND cr.buiding_id = cb.id  
+			<if test="conditionMap.containsKey('handleResult')">
+				AND cra.handle_result=#{conditionMap.handleResult}
+			</if>
+			<if test="conditionMap.containsKey('notHandleResult')">
+				AND cra.handle_result!=#{conditionMap.notHandleResult}
+			</if>
+			<if test="conditionMap.containsKey('communityManagementId')">
+				AND cb.management_id=#{conditionMap.communityManagementId}
+			</if>
+			<if test="conditionMap.containsKey('buidingId')">
+				AND cr.buiding_id = #{conditionMap.buidingId}
+			</if>
+			<if test="conditionMap.containsKey('roomId')">
+				AND cra.room_id = #{conditionMap.roomId}
+			</if>
+			<if test="conditionMap.containsKey('alarmTimeFrom')">
+				AND cra.alarm_time >= #{conditionMap.alarmTimeFrom}
+			</if>
+			<if test="conditionMap.containsKey('alarmTimeTo')">
+				<![CDATA[
+					AND cra.alarm_time <= #{conditionMap.alarmTimeTo}
+				]]>
+			</if>
+		</trim>
+		<if test="conditionMap.containsKey('orderBy')">
+            ORDER BY handle_result ${conditionMap.orderBy}, alarm_time ${conditionMap.orderBy},id ${conditionMap.orderBy}
+       </if>
+       <if  test="conditionMap.containsKey('beginItem') and conditionMap.containsKey('endItem') ">
+            LIMIT ${conditionMap.beginItem},${conditionMap.endItem}
+       </if>
+	</select>
+	
+	
+	<update id="modifyCommunityRoomAlarmListByCondition">
+        update community_room_alarm 
+            <trim prefix="SET" suffixOverrides=",">
+                <if test="settingsMap.containsKey('handleResult')">
+                    handle_result = #{settingsMap.handleResult},
+                </if>
+                <if test="settingsMap.containsKey('handlePeople')">
+                    handle_people = #{settingsMap.handlePeople},
+                </if>
+                <if test="settingsMap.containsKey('handleRemark')">
+                    handle_remark = #{settingsMap.handleRemark},
+                </if>
+                <if test="settingsMap.containsKey('handleTime')">
+                    handle_time = now(),
+                </if>
+                <if test="settingsMap.containsKey('readTime')">
+                    read_time = now(),
+                </if>
+            </trim>
+
+            <trim prefix="WHERE" prefixOverrides="AND">
+                <if test="conditionMap.containsKey('id')">
+                    AND id = #{conditionMap.id}
+                </if>
+            </trim>
+    </update>
+	
+</mapper>
