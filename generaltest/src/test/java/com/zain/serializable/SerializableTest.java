@@ -1,9 +1,12 @@
 package com.zain.serializable;
 
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Copyright (c) 2016 www.yongzhian.cn. All Rights Reserved.
@@ -23,6 +26,18 @@ public class SerializableTest {
         ObjectInputStream ois = new ObjectInputStream(fis);
         Student s = (Student) ois.readObject();
         logger.info(s);
+    }
+
+    @Test
+    public void obj2Xml() throws Exception {
+        XmlMapper xmlMapper = new XmlMapper();
+        List<Student> studentList = new ArrayList<>();
+        Student stu = new Student(1,22L,"毛毛");
+        studentList.add(stu);
+        logger.info(xmlMapper.writeValueAsString(studentList));
+
+        List<Student> ab = xmlMapper.readValue(xmlMapper.writeValueAsString(studentList),List.class);
+        logger.info(ab);
     }
 
     private static class Student implements Serializable{
