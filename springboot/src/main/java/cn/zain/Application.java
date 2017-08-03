@@ -15,6 +15,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.http.HttpStatus;
+import org.springframework.remoting.rmi.RmiProxyFactoryBean;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.annotation.PreDestroy;
@@ -39,6 +40,8 @@ public class Application {
 
 
     public static void main(String[] args) {
+        RmiProxyFactoryBean rmiProxyFactoryBean;
+        ServiceMoniker serviceMoniker;
         //启动方式1 ：自定义多controller启动
 //        Object[] os = new Object[]{SampleController.class,MyController.class};
 //

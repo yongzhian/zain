@@ -35,6 +35,7 @@ public class BloomFilter {
         for(int i=0; i<seeds.length; i++){
             hashFuns[i] = new SimpleHash(DEFAULT_SIZE, seeds[i]);
         }
+
         //配置文件路径地址
         this.path = path;
     }
@@ -82,24 +83,12 @@ public class BloomFilter {
      */
     public void init(){
         File file = new File(path);
-        FileInputStream in = null;
-        try {
-            in = new FileInputStream(file);
+        try(FileInputStream in = new FileInputStream(file);) {
             read(in);
         }catch(Exception e){
             e.printStackTrace();
-        }finally{
-            try {
-                if(in!=null){
-                    in.close();
-                    in = null;
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
-
     /**
      *
      * 方法名：read
@@ -111,12 +100,8 @@ public class BloomFilter {
             return;
         }
 
-        InputStreamReader reader = null;
-
-        try {
-            //创建输入流
-            reader = new InputStreamReader(in, "UTF-8");
-            BufferedReader buffReader = new BufferedReader(reader, 512);
+        try( InputStreamReader reader = new InputStreamReader(in, "GBK");
+             BufferedReader buffReader = new BufferedReader(reader, 512);) {
             String theWord = null;
             do {
                 theWord = buffReader.readLine();
@@ -129,21 +114,6 @@ public class BloomFilter {
 
         } catch (IOException e){
             e.printStackTrace();
-        } finally{
-            //关闭流
-            try {
-                if(reader != null){
-                    reader.close();
-                    reader = null;
-                }
-                if(in != null){
-                    in.close();
-                    in = null;
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
         }
     }
 
@@ -153,8 +123,8 @@ public class BloomFilter {
         BloomFilter bloomFilterTest = new BloomFilter("e:/test.txt");
         bloomFilterTest.init();
 
-        System.out.println(bloomFilterTest.isExit("spark"));
-        System.out.println(bloomFilterTest.isExit("Storm"));
+        System.out.println(bloomFilterTest.isExit("哈哈"));
+        System.out.println(bloomFilterTest.isExit("毛泽东是个什么"));
     }
 
 

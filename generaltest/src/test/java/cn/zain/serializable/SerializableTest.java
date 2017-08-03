@@ -1,4 +1,4 @@
-package com.zain.serializable;
+package cn.zain.serializable;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.apache.log4j.Logger;
