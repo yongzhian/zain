@@ -15,7 +15,7 @@ import java.util.Set;
 
 public class MappingJsonlibVeiw extends AbstractView {
     
-    public static final String DEFAULT_CONTENT_TYPE = "application/json";
+    public static final String CUSTOM_CONTENT_TYPE = "application/json";
     
     public static final String DEFAULT_CHAR_ENCODING = "UTF-8";
  
@@ -24,7 +24,7 @@ public class MappingJsonlibVeiw extends AbstractView {
     private Set<String> renderedAttributes;
 
     public MappingJsonlibVeiw() {
-        setContentType(DEFAULT_CONTENT_TYPE);
+        setContentType(CUSTOM_CONTENT_TYPE);
     }
     
     @Override
