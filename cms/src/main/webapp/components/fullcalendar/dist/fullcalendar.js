@@ -6066,7 +6066,7 @@ function DayEventRenderer() {
 			true // set the heights of the rows
 		);
 
-		// report the elements to the View, for general drag/resize utilities
+		// report the elements to the View, for _general drag/resize utilities
 		segmentElementEach(segments, function(segment, element) {
 			reportEventElement(segment.event, element);
 		});

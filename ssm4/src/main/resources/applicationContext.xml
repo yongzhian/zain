@@ -1,43 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:p="http://www.springframework.org/schema/p" xmlns:cache="http://www.springframework.org/schema/cache"
-	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
 
-	xsi:schemaLocation="http://www.springframework.org/schema/beans   
-          http://www.springframework.org/schema/beans/spring-beans-3.1.xsd   
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-4.3.xsd   
           http://www.springframework.org/schema/context   
-          http://www.springframework.org/schema/context/spring-context-3.1.xsd   
-          http://www.springframework.org/schema/aop   
-          http://www.springframework.org/schema/aop/spring-aop-3.1.xsd   
-          http://www.springframework.org/schema/tx    
-          http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
-          http://www.springframework.org/schema/cache 
-          http://www.springframework.org/schema/cache/spring-cache-3.1.xsd
-          http://www.springframework.org/schema/data/jpa
-          http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
-	
-	<context:annotation-config />
-	<context:component-scan base-package="com.zain"></context:component-scan>
-	
-	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
-	
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/jsp/" p:suffix=".jsp" />
+          http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<!-- 配置数据源 -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="username" value="${db.username}"></property>
-		<property name="password" value="${db.password}"></property>
-		<property name="url" value="${db.url}"></property>
-		<property name="driverClassName" value="${db.driver}"></property>
-		
-		<property name="maxActive" value="${db.maxActive}"></property>
-		<property name="maxIdle" value="${db.maxIdle}"></property>
-		<property name="maxWait" value="${db.maxWait}"></property>
-		<property name="validationQuery" value="SELECT 1"></property>
-	</bean>
-	
+    <context:annotation-config/>
+    <context:component-scan base-package="com.zain"></context:component-scan>
+
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/jsp/" p:suffix=".jsp"/>
+
+    <!-- 配置数据源 -->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="username" value="${db.username}"></property>
+        <property name="password" value="${db.password}"></property>
+        <property name="url" value="${db.url}"></property>
+        <property name="driverClassName" value="${db.driver}"></property>
+        <!-- 连接初始值，连接池启动时创建的连接数量的初始值  默认值是0 -->
+        <property name="initialSize" value="${db.initialSize}"></property>
+        <!--可以在池中保持空闲的最小连接数，超出设置值之外的空闲连接将被创建，如设置为0，则不创建-->
+        <property name="minIdle" value="${db.minIdle}"></property>
+        <!--保持空闲的最大连接数，超出设置值之外的空闲连接将被回收，如设置为负数，则不限制-->
+        <property name="maxIdle" value="${db.maxIdle}"></property>
+        <!--可以在这个池中同时被分配的有效连接数的最大值，如设置为负数，则不限制-->
+        <property name="maxTotal" value="${db.maxTotal}"></property>
+        <!--（如果没有可用连接）池在抛出异常前等待的一个连接被归还的最大毫秒数，设置为-1则等待时间不确定-->
+        <property name="maxWaitMillis" value="${db.maxWaitMillis}"></property>
+        <property name="validationQuery" value="SELECT 1"></property>
+    </bean>
 
 
 </beans>

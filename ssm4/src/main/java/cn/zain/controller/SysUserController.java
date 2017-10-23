@@ -1,4 +1,4 @@
-package com.zain.controller;
+package cn.zain.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +10,8 @@ import java.util.Map;
 
 /**
  * Copyright (c) 2016 www.yongzhian.cn. All Rights Reserved.
+ *
+ * @author Zain
  */
 @Controller
 @RequestMapping("/sysuser")
@@ -22,6 +24,7 @@ public class SysUserController {
         return returnMap;
 
     }
+
     @RequestMapping(value = "/post.do", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> count() {

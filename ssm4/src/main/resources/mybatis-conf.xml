@@ -4,12 +4,6 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<mappers>
-		<mapper resource="mybatis/UserDao.xml" />
-		<mapper resource="mybatis/RobotDao.xml" />
-		<mapper resource="mybatis/RobotAlarmDao.xml" />
-		<mapper resource="mybatis/CommunityManagementDao.xml" />
-		<mapper resource="mybatis/CommunityOwnerRequestDao.xml" />
-		<mapper resource="mybatis/CommunityRoomAlarmDao.xml" />
-		<mapper resource="mybatis/CommunityNotificationDao.xml" />
+		<mapper resource="mybatis/SysUserDao.xml" />
 	</mappers>
 </configuration>

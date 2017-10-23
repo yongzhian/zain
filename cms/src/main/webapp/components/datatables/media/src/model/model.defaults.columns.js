@@ -502,7 +502,7 @@ DataTable.defaults.columns = {
 	 * a "work around" we provide this option. It will append its value to the
 	 * text that is found to be the longest string for the column - i.e. padding.
 	 * Generally you shouldn't need this, and it is not documented on the 
-	 * general DataTables.net documentation
+	 * _general DataTables.net documentation
 	 *  @type string
 	 *  @default <i>Empty string<i>
 	 *  @dtopt Columns

@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="b:war exploded">
+    <output-path>$PROJECT_DIR$/b/target/b</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="b" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/b/target/b/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="b/web/Web" />
+    </root>
+  </artifact>
+</component>

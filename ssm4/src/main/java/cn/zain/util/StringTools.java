@@ -1,12 +1,14 @@
-package com.zain.util;
+package cn.zain.util;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,15 +18,33 @@ import java.util.Map;
 import java.util.Random;
 import java.util.regex.Pattern;
 
+/**
+ * @author Zain
+ */
 public class StringTools {
 
-    private static final Logger logger = Logger.getLogger(StringTools.class);
+    private static final Logger logger = LogManager.getLogger(StringTools.class);
+
+    private static final String DATE_FORMAT = "yyyy-MM-dd";
+
+    private static final String TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
+    private static Pattern numberPattern = Pattern.compile("[0-9]*");
+
+    private static Pattern decimalPattern = Pattern.compile("-?[0-9]+\\.*[0-9]*");
+
+    private static Pattern numberSplitByCommaPattern = Pattern.compile("\\d+(\\,\\d+)*");
 
     private StringTools() {
     }
 
-    private static final String DATE_FORMAT = "yyyy-MM-dd";
-    private static final String TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    //使用ThreadLocal以保证线程安全
+    private static final ThreadLocal<DateFormat> DATE_FORMATTER = new ThreadLocal<DateFormat>() {
+        @Override
+        protected DateFormat initialValue() {
+            return new SimpleDateFormat("yyyy-MM-dd");
+        }
+    };
 
     public static String getNowDate() {
         return getNow(DATE_FORMAT);
@@ -40,9 +60,7 @@ public class StringTools {
     }
 
     public static String getNow(String format) {
-        SimpleDateFormat sdf = new SimpleDateFormat(format);
-
-        return sdf.format(new Date());
+        return DATE_FORMATTER.get().format(new Date());
     }
 
     public static Date str2Date(String dateStr) {
@@ -320,8 +338,7 @@ public class StringTools {
         if (null == str || StringUtils.isBlank(str)) {
             return false;
         }
-        Pattern pattern = Pattern.compile("[0-9]*");
-        return pattern.matcher(str).matches();
+        return numberPattern.matcher(str).matches();
     }
 
     /**
@@ -337,8 +354,7 @@ public class StringTools {
         if (StringUtils.isBlank(str)) {
             return false;
         }
-        Pattern pattern = Pattern.compile("-?[0-9]+\\.*[0-9]*");
-        return pattern.matcher(str).matches();
+        return decimalPattern.matcher(str).matches();
     }
 
     /**
@@ -449,8 +465,7 @@ public class StringTools {
         if (null == str || StringUtils.isBlank(str)) {
             return false;
         }
-        Pattern pattern = Pattern.compile("\\d+(\\,\\d+)*");
-        return pattern.matcher(str).matches();
+        return numberSplitByCommaPattern.matcher(str).matches();
     }
 
     public static float str2Float(String str) {

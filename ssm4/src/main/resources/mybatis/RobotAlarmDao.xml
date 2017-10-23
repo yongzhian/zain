@@ -1,8 +1,0 @@
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.flwrobot.dao.RobotAlarmDao">
-
-	<insert id="insert" parameterType="com.flwrobot.entity.RobotAlarm">    <!-- 向数据库中插入机器人告警信息 -->
-		insert into robot_alarm(robot_id, alarm_type, alarm_content, alarm_time)
-		values(#{robotId}, #{alarmType}, #{alarmContent}, #{alarmTime})
-	</insert>
-</mapper>

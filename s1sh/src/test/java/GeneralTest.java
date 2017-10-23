@@ -18,7 +18,7 @@ import java.util.ServiceLoader;
 /**
  * Copyright (c) 2016 www.yongzhian.cn. All Rights Reserved.
  */
-public class GeneralTest {
+public class GeneralTest1 {
     private Logger logger = Logger.getLogger(GeneralTest.class);
 
     @Test

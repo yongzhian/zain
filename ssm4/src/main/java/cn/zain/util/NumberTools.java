@@ -1,7 +1,8 @@
-package com.zain.util;
+package cn.zain.util;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -11,7 +12,7 @@ import java.util.Map;
  * Created by Zain on 2017/7/4.
  */
 public class NumberTools {
-    private static final Logger logger = Logger.getLogger(NumberTools.class);
+    private static final Logger logger = LogManager.getLogger(NumberTools.class);
     private static final String[] CN_UPPER_MONETARY_NUMBER = {"零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"};//数字大写
     private static final String[] CN_UPPER_MONETARY_UNIT = {"分", "角", "元", "拾", "佰", "仟", "万", //货币单位大写
             "拾", "佰", "仟", "亿", "拾", "佰", "仟", "兆", "拾", "佰", "仟"};

@@ -1,7 +1,8 @@
-package com.zain.util;
+package cn.zain.util;
 
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
@@ -10,25 +11,35 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.SecureRandom;
 
-public class AESUtil {
+/**
+ * AES加密解密工具
+ *
+ * @author Zain
+ */
+public class AesUtil {
 
-    private static final Logger logger = Logger.getLogger(AESUtil.class);
+    private static final Logger logger = LogManager.getLogger(AesUtil.class);
 
     private static final String KEY = "W4YgAdDoTadR3Ky0";
-    private static final String IV = "9726836823768122"; //必须16为long型
+
+    /**
+     * 必须16为long型
+     */
+    private static final String IV = "9726836823768122";
 
     private static final String KEY_ALGORITHM = "AES";
     private static final byte[] SEED = {0x38, 0x37, 0x36, 0x35, 0x34, 0x33, 0x32, 0x02, 0x78, 0x67,
             0x56, 0x45, 0x34, 0x23, 0x12, 0x01};
 
-    private AESUtil() {
+    private AesUtil() {
     }
 
     /**
-     * 通用AES加密方式 可与python/C#等相互加密解密
+     * 功能说明：通用AES加密方式
+     * 可与python/C#等相互加密解密
      * 注意：由于AES仅支持16位字符加密和解密，如果非16位会自动补空格，解密时会去掉首尾空格，故需要加密串不能在首尾出现空格
      *
-     * @param encryStr
+     * @param encryStr 待加密串
      * @return base64位字符串
      */
     public static String encryptComm(String encryStr) {
@@ -55,10 +66,11 @@ public class AESUtil {
     }
 
     /**
-     * 通用AES解密方式 可与python/C#等相互加密解密
+     * 功能说明：通用AES解密方式
+     * 可与python/C#等相互加密解密
      *
-     * @param desStr
-     * @return
+     * @param desStr 待解密串
+     * @return String
      */
     public static String decryptComm(String desStr) {
         try {
@@ -77,10 +89,10 @@ public class AESUtil {
     }
 
     /**
-     * 加密
+     * 功能说明：加密
      *
      * @param content 需要加密的内容，默认工作模式为ECB
-     * @return
+     * @return String
      * @deprecated 现用encryptComm替换
      */
     @Deprecated
@@ -97,11 +109,11 @@ public class AESUtil {
             SecretKey secretKey = kgen.generateKey();
 
             SecretKeySpec key = new SecretKeySpec(secretKey.getEncoded(), KEY_ALGORITHM);
+            // 创建密码器
+            Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);
 
-            Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);// 创建密码器
-
-            cipher.init(Cipher.ENCRYPT_MODE, key);// 初始化
-            return StringTools.byte2HexStr(cipher.doFinal(content.getBytes("utf-8"))); // 加密
+            cipher.init(Cipher.ENCRYPT_MODE, key);
+            return StringTools.byte2HexStr(cipher.doFinal(content.getBytes("utf-8")));
         } catch (Exception e) {
             logger.error("加密失败.", e);
         }
@@ -109,10 +121,10 @@ public class AESUtil {
     }
 
     /**
-     * 解密
+     * 功能说明：解密
      *
      * @param content 待解密内容
-     * @return
+     * @return String
      * @deprecated 现用decryptComm替换
      */
     @Deprecated
@@ -127,9 +139,10 @@ public class AESUtil {
             SecretKey secretKey = kgen.generateKey();
 
             SecretKeySpec key = new SecretKeySpec(secretKey.getEncoded(), KEY_ALGORITHM);
-            Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);// 创建密码器
-            cipher.init(Cipher.DECRYPT_MODE, key);// 初始化
-            return new String(cipher.doFinal(StringTools.hexStr2Byte(content)), "UTF-8");// 加密
+            // 创建密码器
+            Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);
+            cipher.init(Cipher.DECRYPT_MODE, key);
+            return new String(cipher.doFinal(StringTools.hexStr2Byte(content)), "UTF-8");
         } catch (Exception e) {
             logger.error("解密失败.", e);
         }
