@@ -8,8 +8,8 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GeneralTest extends BaseLog{
-    private static Logger logger1 = LogManager.getLogger();
+public class GeneralTest {
+    private static Logger logger = LogManager.getLogger();
     private static Logger logger2 = LogManager.getLogger(GeneralTest.class);
     private static Logger logger3 = LogManager.getLogger("abc");
     private static Logger logger4 = LogManager.getLogger("cn.zain._general.BaseLogze");
@@ -17,7 +17,7 @@ public class GeneralTest extends BaseLog{
     @Test
     public void loggerTest() throws Exception {
         logger.info(Boolean.TRUE.toString().equals("true"));
-        logger1.info("来自1");
+        logger.info("来自1");
         logger2.info("来自2");
         logger3.info("来自3");
         logger4.info("来自4");
