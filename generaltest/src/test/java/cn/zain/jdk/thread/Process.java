@@ -1,13 +1,14 @@
 package cn.zain.jdk.thread;
 
 import cn.zain.jdk.JdkTest;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by Zain on 2017/7/18.
  */
 public class Process {
-    private static Logger logger = Logger.getLogger(Process.class);
+    private static Logger logger = LoggerFactory.getLogger(Process.class);
     private Process processFlwMessage = null;
     private  Student student1;
 

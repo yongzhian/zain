@@ -2,13 +2,14 @@ package cn.zain.ehcache;
 
 import cache.CacheWithMap;
 import cache.RobotTaskDef;
-import org.apache.log4j.Logger;
 import org.ehcache.Cache;
 import org.ehcache.CacheManager;
 import org.ehcache.config.builders.CacheConfigurationBuilder;
 import org.ehcache.config.builders.CacheManagerBuilder;
 import org.ehcache.config.builders.ResourcePoolsBuilder;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.Map;
  * Created by Zain on 2017/8/3.
  */
 public class EhcacheTest {
-    private static Logger logger = Logger.getLogger(EhcacheTest.class);
+    private static Logger logger = LoggerFactory.getLogger(EhcacheTest.class);
 
     @Test
     public void cacheCompare() throws Exception {
@@ -37,7 +38,7 @@ public class EhcacheTest {
         for (int i = 0; i < 1000; i++) {
             Map map = CacheWithMap.getInstance().getCache("def" + i);
             if (i == 100 || i == 910) {
-                logger.info(map.get("taskType527"));
+                logger.info("{}", map.get("taskType527"));
             }
         }
         logger.info("map耗时：" + (System.currentTimeMillis() - start) + "ms");
@@ -54,7 +55,7 @@ public class EhcacheTest {
         for (int i = 0; i < 1000; i++) {
             Cache<String, RobotTaskDef> myCache = cacheManager.getCache("def" + i, String.class, RobotTaskDef.class);
             if (i == 100 || i == 910) {
-                logger.info(myCache.get("taskType527"));
+                logger.info("{}",myCache.get("taskType527"));
             }
         }
 
@@ -74,7 +75,7 @@ public class EhcacheTest {
         value = myCache.get(3L);
         logger.info(value);
 
-        logger.info(cacheManager.getCache("preConfigured1", Long.class, String.class) == null);
+        logger.info("{}",cacheManager.getCache("preConfigured1", Long.class, String.class) == null);
 
         cacheManager.close();
 

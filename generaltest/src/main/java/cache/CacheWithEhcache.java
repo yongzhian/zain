@@ -1,20 +1,19 @@
 package cache;
 
-import org.apache.log4j.Logger;
 import org.ehcache.Cache;
 import org.ehcache.CacheManager;
 import org.ehcache.config.builders.CacheConfigurationBuilder;
 import org.ehcache.config.builders.CacheManagerBuilder;
 import org.ehcache.config.builders.ResourcePoolsBuilder;
 import org.ehcache.config.units.MemoryUnit;
-
-import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by Zain on 2017/8/3.
  */
 public class CacheWithEhcache<K, V> {
-    private static Logger logger = Logger.getLogger(CacheWithEhcache.class);
+    private static Logger logger = LoggerFactory.getLogger(CacheWithEhcache.class);
 
     private static CacheWithEhcache cacheWithEhcache = new CacheWithEhcache();
 

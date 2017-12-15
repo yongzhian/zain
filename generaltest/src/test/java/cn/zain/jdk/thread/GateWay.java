@@ -1,12 +1,13 @@
 package cn.zain.jdk.thread;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by Zain on 2017/7/18.
  */
 public class GateWay {
-    private static Logger logger = Logger.getLogger(GateWay.class);
+    private static Logger logger = LoggerFactory.getLogger(GateWay.class);
     public static void main(String[] args) {
 
         for(int i=0;i<10000;i++){
@@ -14,7 +15,7 @@ public class GateWay {
 
             Bu bu = new Bu(Process.getInstance(),student);
             bu.start();
-            logger.info(i);
+            logger.info("{}",i);
         }
 
     }
