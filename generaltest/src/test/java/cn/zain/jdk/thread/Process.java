@@ -1,16 +1,16 @@
 package cn.zain.jdk.thread;
 
-import cn.zain.jdk.JdkTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.CountDownLatch;
 
 /**
  * Created by Zain on 2017/7/18.
  */
 public class Process {
     private static Logger logger = LoggerFactory.getLogger(Process.class);
-    private Process processFlwMessage = null;
-    private  Student student1;
+    private Student student1;
 
     public static Process getInstance() {
         return Inner.processFlwMessage;
@@ -20,16 +20,10 @@ public class Process {
         private static Process processFlwMessage = new Process();
     }
 
-    public synchronized void dealStu(Student student){
-        student1 = new Student(student.getName(),student.getAge());
-        try {
-        Thread.sleep(110);
-    } catch (InterruptedException e) {
-        e.printStackTrace();
-    }
+    public void dealStu(Student student) {
+        student1 = new Student(student.getName(), student.getAge());
         student1.setAge(student.getAge());
-        if(student1.getAge() != student.getAge()){
-
+        if (student1.getAge() != student.getAge()) {
             logger.info(student1 + " -----student" + student);
         }
     }

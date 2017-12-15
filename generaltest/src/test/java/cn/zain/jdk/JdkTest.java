@@ -8,12 +8,14 @@ import java.util.PriorityQueue;
 
 /**
  * Created by Zain on 2017/4/25.
+ * 优先堆的一个无界队列，这个优先队列中的元素可以默认自然排序或者通过提供的Comparator（比较器）在队列实例化的时排序。
+ * 无序插入到priorityQueue，最后有序输出
  */
 public class JdkTest {
     private static Logger logger = LoggerFactory.getLogger(JdkTest.class);
     @Test
     public void priorityQueueTest() throws Exception {
-        PriorityQueue priorityQueue = new PriorityQueue();
+        PriorityQueue<Student> priorityQueue = new PriorityQueue();
         priorityQueue.add(new Student("a"));  //siftUpComparable要求有序
         priorityQueue.add(new Student("b"));
         priorityQueue.add(new Student("d"));
@@ -23,7 +25,7 @@ public class JdkTest {
         logger.info("{}",priorityQueue.poll());
         logger.info("{}",priorityQueue.poll());
     }
-    class Student{
+    class Student implements Comparable<Student>{
         private String name;
 
         public Student(String name) {
@@ -43,6 +45,11 @@ public class JdkTest {
             return "Student{" +
                     "name='" + name + '\'' +
                     '}';
+        }
+
+        @Override
+        public int compareTo(Student o) {
+            return this.name.compareTo(o.name);
         }
     }
 }
