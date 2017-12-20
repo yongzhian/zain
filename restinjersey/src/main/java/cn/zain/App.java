@@ -19,6 +19,7 @@ public class App {
         ResourceConfig config = new ResourceConfig().packages("cn.zain.controller");
         HttpServer httpServer = GrizzlyHttpServerFactory.createHttpServer(URI.create("http://localhost:8080/app/"), config);
         logger.info("Start Grizzly Server success...");
+        logger.info("you can test by url: http://127.0.0.1:8080/app/user/tom");
         System.in.read();
         httpServer.shutdown();
 
