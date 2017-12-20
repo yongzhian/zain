@@ -1,9 +1,8 @@
 package cn.zain.controller;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import cn.zain.model.entity.User;
+
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -25,4 +24,12 @@ public class UserController {
     public String sayHelloToUTF8(@PathParam("param") String username) {
         return "你好 " + username;
     }
+
+    @GET
+    @Path("/obj/{param}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public User getUser(@PathParam("param") String username) {
+        return new User(username,23);
+    }
+
 }
