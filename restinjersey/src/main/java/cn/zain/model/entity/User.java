@@ -1,12 +1,20 @@
 package cn.zain.model.entity;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * @author Zain
  */
+@XmlRootElement
 public class User {
 
     private String name;
+
     private int age;
+
+    //一定要有无参数构造
+    public User() {
+    }
 
     public User(String name, int age) {
         this.name = name;
