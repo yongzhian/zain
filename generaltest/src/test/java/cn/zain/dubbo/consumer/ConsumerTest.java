@@ -16,5 +16,6 @@ public class ConsumerTest {
         DemoService demoService = (DemoService) context.getBean("demoService");
         String result = demoService.sayHello("毛毛");
         logger.info("dubbo结果: {}",result);
+        System.in.read(); // press any key to exit
     }
 }

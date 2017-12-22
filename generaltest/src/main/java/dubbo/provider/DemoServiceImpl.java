@@ -1,18 +1,18 @@
 package dubbo.provider;
 
-import com.alibaba.dubbo.common.utils.NetUtils;
 import dubbo.service.DemoService;
-
-import java.net.DatagramSocket;
-import java.net.InetSocketAddress;
-import java.net.MulticastSocket;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Zain
  */
 public class DemoServiceImpl implements DemoService {
+    private static final Logger logger = LoggerFactory.getLogger(DemoServiceImpl.class);
+
     @Override
     public String sayHello(String name) {
+        logger.info("{}...",name);
         return "Hello " + name;
     }
 }
