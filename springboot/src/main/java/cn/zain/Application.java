@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import javax.annotation.PreDestroy;
 
 /**
- * Copyright (c) 2016 www.yongzhian.cn. All Rights Reserved.
+ * Copyright (c) 2018 www.yongzhian.cn. All Rights Reserved.
  */
 //@Configuration //配置控制
 //@EnableAutoConfiguration //启用自动配置 隐式地定义了一个基础的包搜索路径（search package）
